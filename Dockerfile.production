@@ -1,0 +1,29 @@
+FROM ruby:2.7-alpine
+MAINTAINER Darek Finster <darek.finster@gmail.com>
+
+RUN apk --update add --virtual build-dependencies \
+                               build-base \
+                               libxml2-dev \
+                               libxslt-dev \
+                               postgresql-dev \
+                               nodejs \
+                               yarn \
+                               tzdata \
+                               vim \
+                               && rm -rf /var/cache/apk/*
+
+RUN mkdir /docker-rails
+WORKDIR /docker-rails
+COPY Gemfile /docker-rails/Gemfile
+COPY Gemfile.lock /docker-rails/Gemfile.lock
+COPY package.json yarn.lock ./
+
+RUN bundle install --path vendor/bundle --without development test doc --deployment --jobs=4
+RUN yarn install --frozen-lockfile --non-interactive
+
+COPY . /docker-rails
+
+EXPOSE 3000
+
+RUN RAILS_ENV=production SECRET_TOKEN=test bundle exec rake assets:clobber assets:precompile --trace
+RUN yarn cache clean

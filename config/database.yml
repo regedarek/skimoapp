@@ -18,6 +18,8 @@ test:
 
 production:
   <<: *default
-  database: docker_rails_production
-  username: docker_rails
-  password: <%= ENV['DOCKER_RAILS_DATABASE_PASSWORD'] %>
+  host:     <%= ENV['DB_HOST'] %>
+  adapter:  <%= ENV['DB_ADAPTER'] || 'postgresql' %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %> 
