@@ -7,7 +7,7 @@ services:
     depends_on:
       - app
     ports:
-      - 8080:80
+      - 80:80
     image: regedarek/skimoapp-web
   db:
     image: postgres
