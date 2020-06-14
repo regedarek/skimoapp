@@ -12,25 +12,27 @@ services:
   db:
     image: postgres
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=postgres
-      - DATABASE_HOST=db-host
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=db
+      - POSTGRES_HOST_AUTH_METHOD=trust
     ports:
-      - "5433:5433"
+      - "5432:5432"
   app:
     environment:
-        - SECRET_TOKEN=tessfsdf
-        - RAILS_ENV=production
-        - RACK_ENV=production
+      - RAILS_ENV=development
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=db
+      - POSTGRES_HOST_AUTH_METHOD=trust
     image: regedarek/skimoapp-app
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
     volumes:
-      - .:/docker-rails
+      - .:/var/www/skimoapp
     ports:
       - "3000:3000"
       - "3035:3035"
@@ -38,4 +40,4 @@ services:
       - db
 volumes:
   web:
-  db:
+  db_data:

@@ -2,24 +2,20 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: rails-db
+  host:     <%= ENV['DB_HOST'] %>
+  adapter:  <%= ENV['DB_ADAPTER'] || 'postgresql' %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %> 
 
 development:
   <<: *default
   database: docker_rails_development
-  username: postgres
-  password: postgres
 
 test:
   <<: *default
   database: docker_rails_test
-  username: postgres
-  password: postgres
 
 production:
   <<: *default
-  host:     <%= ENV['DB_HOST'] %>
-  adapter:  <%= ENV['DB_ADAPTER'] || 'postgresql' %>
-  database: <%= ENV['DB_NAME'] %>
-  username: <%= ENV['DB_USER'] %>
-  password: <%= ENV['DB_PASSWORD'] %> 
+  database: docker_rails_production
+

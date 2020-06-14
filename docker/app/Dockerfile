@@ -19,20 +19,15 @@ RUN mkdir -p $RAILS_ROOT
 # Set working directory, where the commands will be ran:
 WORKDIR $RAILS_ROOT
 
-# Setting env up
-ENV RAILS_ENV='production'
-ENV RACK_ENV='production'
-
 # Adding gems
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
-RUN bundle install --jobs 20 --retry 5 --without development test
+RUN bundle install --jobs 20 --retry 5
 
-# Adding project files
 COPY . .
 
-RUN RAILS_ENV=production SECRET_TOKEN=test bundle exec rake assets:clobber assets:precompile --trace
-RUN yarn cache clean
+#RUN RAILS_ENV=production SECRET_TOKEN=test bundle exec rake assets:clobber assets:precompile --trace
+#RUN yarn cache clean
 
 EXPOSE 3000
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
