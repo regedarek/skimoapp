@@ -30,7 +30,9 @@ RUN bundle install --jobs 20 --retry 5 --without development test
 
 # Adding project files
 COPY . .
-RUN bundle exec rake assets:precompile
+
+RUN RAILS_ENV=production SECRET_TOKEN=test bundle exec rake assets:clobber assets:precompile --trace
+RUN yarn cache clean
 
 EXPOSE 3000
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

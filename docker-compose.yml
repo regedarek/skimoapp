@@ -21,6 +21,10 @@ services:
     ports:
       - "5432:5432"
   app:
+    environment:
+        - SECRET_TOKEN=tessfsdf
+        - RAILS_ENV=production
+        - RACK_ENV=production
     image: regedarek/skimoapp-app
     build:
       context: .
