@@ -1,35 +1,37 @@
 version: '3'
 services:
-  rails-db:
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/web/Dockerfile
+    depends_on:
+      - app
+    ports:
+      - 8080:80
+    image: regedarek/skimoapp-nginx
+  db:
     image: postgres
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
-    container_name: rails-db
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=postgres
       - DATABASE_HOST=db-host
-    networks:
-      - networks
     ports:
       - "5432:5432"
-  rails-web:
-    build: .
-    container_name: rails-web
-    command: sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+  app:
+    image: regedarek/skimoapp-web
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
     volumes:
       - .:/docker-rails
     ports:
       - "3000:3000"
       - "3035:3035"
     depends_on:
-      - rails-db
-    networks:
-      - networks
+      - db
 volumes:
-  rails-web:
-  rails-db:
-networks:
-  networks:
-    driver: bridge
+  web:
+  db:
