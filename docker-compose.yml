@@ -39,5 +39,5 @@ services:
     depends_on:
       - db
 volumes:
-  web:
+  app:
   db_data:
