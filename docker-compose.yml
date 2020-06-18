@@ -18,7 +18,7 @@ services:
     networks:
       service_network:
     volumes:
-      - ./docker/web/app.conf:/etc/nginx/conf.d/my_proxy.conf:ro
+      - /var/run/docker.sock:/tmp/docker.sock:ro
       - nginx-certs:/etc/nginx/certs
       - nginx-vhost:/etc/nginx/vhost.d
       - nginx-html:/usr/share/nginx/html
@@ -30,7 +30,7 @@ services:
     networks:
       service_network:
     volumes:
-      - ./docker/web/app.conf:/etc/nginx/conf.d/my_proxy.conf:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - nginx-certs:/etc/nginx/certs
       - nginx-vhost:/etc/nginx/vhost.d
       - nginx-html:/usr/share/nginx/html
@@ -45,7 +45,7 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
     ports:
       - "5433:5433"
-  web:
+  app:
     expose:
      - 3000
     environment:
@@ -73,6 +73,17 @@ services:
       - "3035:3035"
     depends_on:
       - db
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/web/Dockerfile
+    depends_on:
+      - app
+    ports:
+      - 80:80
+    image: regedarek/skimoapp-web
+    networks:
+      service_network:
 
 networks:
   service_network:
