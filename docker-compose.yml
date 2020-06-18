@@ -18,7 +18,7 @@ services:
     networks:
       service_network:
     volumes:
-      - ./docker/web/app.conf:/etc/nginx/conf.d/my_proxy.conf:ro
+      - nginx-conf:./docker/web/app.conf:/etc/nginx/conf.d/my_proxy.conf:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - nginx-certs:/etc/nginx/certs
       - nginx-vhost:/etc/nginx/vhost.d
@@ -48,7 +48,7 @@ services:
       - "5433:5433"
   web:
     expose:
-     - 8000
+     - 3000
     environment:
       - RAILS_ENV=development
       - DB_USER=postgres
@@ -57,7 +57,7 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
       - RAILS_SERVE_STATIC_FILES=true
       - RAILS_LOG_TO_STDOUT=true
-      - HTTP_PORT=8000
+      - HTTP_PORT=3000
       - VIRTUAL_HOST=www.skimo.pl
       - LETSENCRYPT_HOST=www.skimo.pl
       - LETSENCRYPT_EMAIL="dariusz.finster@gmail.com"
@@ -70,7 +70,7 @@ services:
     volumes:
       - .:/var/www/skimoapp
     ports:
-      - "8000:8000"
+      - "3000:3000"
       - "3035:3035"
     depends_on:
       - db
@@ -84,3 +84,4 @@ volumes:
   nginx-certs:
   nginx-vhost:
   nginx-html:
+  nginx-conf:
