@@ -1,14 +1,39 @@
 version: '3'
 services:
-  web:
-    build:
-      context: .
-      dockerfile: ./docker/web/Dockerfile
-    depends_on:
-      - app
+  web-redirect:
+    image: adamkdean/redirect
+    environment:
+      VIRTUAL_HOST: skimo.pl
+      LETSENCRYPT_HOST: skimo.pl
+      LETSENCRYPT_EMAIL: "dariusz.finster@gmail.com"
+      REDIRECT_LOCATION: "https://www.skimo.pl"
+    networks:
+      service_network:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
     ports:
       - 80:80
-    image: regedarek/skimoapp-web
+      - 443:443
+    container_name: nginx-proxy
+    networks:
+      service_network:
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - nginx-certs:/etc/nginx/certs
+      - nginx-vhost:/etc/nginx/vhost.d
+      - nginx-html:/usr/share/nginx/html
+
+  nginx-proxy-letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    environment:
+      NGINX_PROXY_CONTAINER: "nginx-proxy"
+    networks:
+      service_network:
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - nginx-certs:/etc/nginx/certs
+      - nginx-vhost:/etc/nginx/vhost.d
+      - nginx-html:/usr/share/nginx/html
   db:
     image: postgres
     volumes:
@@ -20,7 +45,9 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
     ports:
       - "5433:5433"
-  app:
+  web:
+    expose:
+     - 8000
     environment:
       - RAILS_ENV=development
       - DB_USER=postgres
@@ -29,6 +56,12 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
       - RAILS_SERVE_STATIC_FILES=true
       - RAILS_LOG_TO_STDOUT=true
+      - HTTP_PORT=8000
+      - VIRTUAL_HOST=www.skimo.pl
+      - LETSENCRYPT_HOST=www.skimo.pl
+      - LETSENCRYPT_EMAIL="dariusz.finster@gmail.com"
+    networks:
+      service_network:
     image: regedarek/skimoapp-app
     build:
       context: .
@@ -36,10 +69,17 @@ services:
     volumes:
       - .:/var/www/skimoapp
     ports:
-      - "3000:3000"
+      - "8000:8000"
       - "3035:3035"
     depends_on:
       - db
+
+networks:
+  service_network:
+
 volumes:
   app:
   db_data:
+  nginx-certs:
+  nginx-vhost:
+  nginx-html:
