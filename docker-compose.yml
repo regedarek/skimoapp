@@ -80,7 +80,7 @@ services:
     depends_on:
       - app
     ports:
-      - 80:80
+      - 80:443
     image: regedarek/skimoapp-web
     networks:
       service_network:
