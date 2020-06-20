@@ -8,12 +8,12 @@ default: &default
   password: <%= ENV['DB_PASSWORD'] %> 
 
 development:
-  <<: *default
-  database: docker_rails_development
+  adapter: sqlite3
+  database: db/beer_development.sqlite3
 
 test:
-  <<: *default
-  database: docker_rails_test
+  adapter: sqlite3
+  database: db/beer_test.sqlite3
 
 production:
   <<: *default
