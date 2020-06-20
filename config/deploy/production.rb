@@ -1,3 +1,5 @@
+server '54.38.54.135', user: fetch(:deploy_user), roles: %w{app db web}
+set :rails_env, 'production'
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.

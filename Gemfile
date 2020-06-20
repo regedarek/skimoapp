@@ -43,6 +43,11 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'sqlite3'
+  gem "capistrano", "~> 3.10", require: false
+  gem 'capistrano-bundler', '~> 1.6'
+  gem "capistrano-rails", "~> 1.5", require: false
+  gem 'capistrano-rbenv', '~> 2.0', require: false
+  gem 'capistrano-passenger', '~> 0.2.0'
 end
 
 group :test do
