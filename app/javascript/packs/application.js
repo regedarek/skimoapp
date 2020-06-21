@@ -9,6 +9,8 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery");
 require("bootstrap");
+require("packs/easing")
+require("packs/grayscale")
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -21,3 +23,6 @@ import 'css/pages'
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+//
+
+
