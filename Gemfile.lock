@@ -228,11 +228,10 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
-  capistrano (~> 3.10)
-  capistrano-bundler (~> 1.6)
+  capistrano (~> 3.11)
   capistrano-passenger (~> 0.2.0)
-  capistrano-rails (~> 1.5)
-  capistrano-rbenv (~> 2.0)
+  capistrano-rails (~> 1.4)
+  capistrano-rbenv (~> 2.1, >= 2.1.4)
   capybara (>= 2.15)
   dotenv-rails
   jbuilder (~> 2.7)
