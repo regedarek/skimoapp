@@ -16,6 +16,5 @@ test:
   database: db/beer_test.sqlite3
 
 production:
-  <<: *default
-  database: docker_rails_production
+  url: <%= ENV['DATABASE_URL'] %>
 
