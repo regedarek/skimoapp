@@ -26,6 +26,10 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 gem 'dotenv-rails'
+gem 'devise'
+gem 'devise-i18n'
+gem 'devise-bootstrap-views', '~> 1.0'
+gem 'high_voltage', '~> 3.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
