@@ -45,6 +45,7 @@
                     <% if user_signed_in? %>
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <%= image_tag current_user.avatar_thumbnail, class: 'rounded-circle', data: { 'holder-rendered': "true" }, size: '24x24' %>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                           <%= link_to(t('.settings'), edit_user_registration_path, class: 'dropdown-item') %>
