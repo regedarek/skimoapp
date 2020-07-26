@@ -11,10 +11,10 @@ prod_openstack:
   container: "skimoapp-cloud-production" # Container name for your OpenStack provider
   credentials:
     openstack_auth_url: "https://auth.cloud.ovh.net/"
-    openstack_username: <%= ENV["OPENSTACK_USERNAME"] %>
-    openstack_api_key: <%= ENV["OPENSTACK_API_KEY"] %>
+    openstack_username: <%= Rails.application.credentials.dig(:openstack, :username) %>
+    openstack_api_key: <%= Rails.application.credentials.dig(:openstack, :api_key) %>
     openstack_region: 'WAW'
-    openstack_temp_url_key: <%= ENV["OPENSTACK_TEMP_KEY"] %>
+    openstack_temp_url_key: <%= Rails.application.credentials.dig(:openstack, :temp_key) %>
   connection_options: # optional
     chunk_size: 2097152 # 2MBs - 1MB is the default
 
