@@ -6,7 +6,7 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
-openstack:
+prod_openstack:
   service: OpenStack
   container: "skimoapp-cloud-production" # Container name for your OpenStack provider
   credentials:
