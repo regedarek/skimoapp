@@ -1,0 +1,18 @@
+.container
+  .row
+    table.table
+      thead.thead-dark
+        tr
+          th scope="col"  Nr
+          th scope="col"  Imię i nazwisko
+          th scope="col"  Klub
+          th scope="col"  Numer uprawnień
+          th scope="col"  Data ważności
+      tbody
+        - @referees.each_with_index do |referee, index|
+          tr
+            th scope="row" = index + 1
+            td = referee.user.display_name
+            td
+            td = referee.number
+            td = referee.expiration_date

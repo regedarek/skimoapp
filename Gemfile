@@ -22,11 +22,18 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'honeybadger', '~> 4.0'
+gem "slim-rails"
 
 # Use Active Storage variant
 gem "mini_magick"
 gem 'image_processing', '~> 1.2'
 gem 'activestorage-openstack', '1.4.1'
+
+gem 'dry-struct'
+gem 'dry-schema'
+gem 'dry-matcher'
+gem 'dry-monads'
+gem 'dry-auto_inject'
 
 gem 'dotenv-rails'
 gem 'devise'

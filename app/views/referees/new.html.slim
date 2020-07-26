@@ -1,0 +1,36 @@
+.container
+  .row
+    .col
+      h1 Dodaj sędziego
+      = form_for(@referee, as: :referee, url: referees_path) do |f|
+
+        .form-group
+          = f.label :first_name
+          = f.text_field :first_name, class: 'form-control'
+
+        .form-group
+          = f.label :last_name
+          = f.text_field :last_name, class: 'form-control'
+
+        .form-group
+          = f.label :phone
+          = f.text_field :phone, class: 'form-control'
+
+        .form-group
+          = f.label :number
+          = f.text_field :number, class: 'form-control'
+
+        .form-group
+          = f.label :email
+          = f.email_field :email, class: 'form-control'
+
+        .form-group
+          = f.label :organization
+          = f.text_field :organization, class: 'form-control'
+
+        .form-group
+          = f.label :expiration_date
+          = f.date_field :expiration_date, class: 'form-control'
+
+        .form-group
+          = f.submit 'Dodaj sędziego', class: 'btn btn-primary'
