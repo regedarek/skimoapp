@@ -16,16 +16,14 @@
       <!-- Navigation-->
       <nav class="navbar navbar-expand-lg navbar-light navbar-shrink fixed-top" id="mainNav">
           <div class="container">
-              <a class="navbar-brand js-scroll-trigger" href="#page-top">Puchar Polski</a>
+              <a class="navbar-brand js-scroll-trigger" href="/">Narciarstwo Wysokogórskie</a>
               <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                   Menu
                   <i class="fas fa-bars"></i>
               </button>
               <div class="collapse navbar-collapse" id="navbarResponsive">
                   <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">O Pucharze</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Ranking</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Zawodnicy</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Puchar Polski</a></li>
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Organizacja
@@ -44,6 +42,20 @@
                         <a class="dropdown-item" href="#">Regulamin Mistrzostw Polski</a>
                       </div>
                     </li>
+                    <% if user_signed_in? %>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <%= link_to(t('.settings'), edit_user_registration_path, class: 'dropdown-item') %>
+                          <%= link_to(t('.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item') %>
+                        </div>
+                      </li>
+                    <% else %>
+                      <li class="nav-item">
+                        <%= link_to(t('.sign_in_or_sign_up'), new_user_session_path, class: 'nav-link js-scroll-trigger text-danger') %>
+                      </li>
+                    <% end %>
                   </ul>
               </div>
           </div>

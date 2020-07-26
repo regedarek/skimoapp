@@ -1,0 +1,34 @@
+pl:
+  devise:
+    registrations:
+      edit:
+        back: wróć
+  layouts:
+    application:
+      settings: Ustawienia
+      sign_in: Zaloguj się
+      sign_in_or_sign_up: Zaloguj lub zarejestruj!
+      sign_up: Zarejestruj się
+      sign_out: Wyloguj się
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: nie został podany
+            password:
+              blank: nie zostało wypełnione
+            first_name:
+              blank: nie zostało wypełnione
+            last_name:
+              blank: nie zostało wypełnione
+    models:
+      user:
+        one: Użytkownik
+    attributes:
+      user:
+        first_name: "Imię"
+        last_name: "Nazwisko"
+        email: "E-mail"
+        phone: "Telefon"
