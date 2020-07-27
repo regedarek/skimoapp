@@ -19,7 +19,7 @@ class CreateReferee
     form_outputs = CreateRefereeSchema.call(raw_params.to_unsafe_h)
     return Failure([:invalid, raw_params.to_unsafe_hash, form_outputs.errors]) if form_outputs.failure?
 
-    user = users_repository.create(
+    user = users_repository.find_or_create(
       form_outputs[:referee].except!(
         :number, :organization, :expiration_date
       ).merge(password: 'test12')
