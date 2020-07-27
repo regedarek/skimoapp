@@ -24,15 +24,16 @@ class RefereesController < ApplicationController
   def create
     test = Dry::Matcher::ResultMatcher.(create_referee.call(params)) do |m|
       m.success do |v|
-        "Yay: #{v}"
+        redirect_to referees_path, notice: 'Udało się'
       end
 
       m.failure(:not_found) do
         "No such thing"
       end
 
-      m.failure(:invalid) do |_code, errors|
-        "Cannot be done: #{errors.inspect}"
+      m.failure(:invalid) do |_code, params, errors|
+        @referee = RefereeEntity.new(params[:referee])
+        render :new
       end
     end
   end

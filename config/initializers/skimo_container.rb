@@ -15,3 +15,4 @@ class SkimoContainer
 end
 
 Import = Dry::AutoInject(SkimoContainer)
+Dry::Schema.load_extensions(:monads)
