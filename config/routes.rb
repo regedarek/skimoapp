@@ -5,5 +5,5 @@ Rails.application.routes.draw do
     get 'zaloguj', to: 'devise/sessions#new'
   end
 
-  resources :referees
+  resources :referees, path: 'sedziowie'
 end
