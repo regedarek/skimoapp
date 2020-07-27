@@ -9,6 +9,10 @@ class SkimoContainer
     UsersRepository.new
   end
 
+  register "repositories.organizations_repository" do
+    OrganizationsRepository.new
+  end
+
   register "operations.create_referee" do
     CreateReferee.new
   end

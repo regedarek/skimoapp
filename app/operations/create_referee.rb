@@ -1,7 +1,6 @@
 class CreateReferee
-  include Import["repositories.users_repository", "repositories.referees_repository"]
+  include Import["repositories.users_repository", "repositories.referees_repository", "repositories.organizations_repository"]
   include Dry::Monads[:result]
-
 
   CreateRefereeSchema = Dry::Schema.Params do
     required(:referee).hash do
@@ -20,15 +19,16 @@ class CreateReferee
     return Failure([:invalid, raw_params.to_unsafe_hash, form_outputs.errors]) if form_outputs.failure?
 
     user = users_repository.find_or_create(
-      form_outputs[:referee].except!(
-        :number, :organization, :expiration_date
+      form_outputs[:referee].extract!(
+        :first_name, :last_name, :phone, :email
       ).merge(password: 'test12')
     )
-    referees_repository.create(
-      form_outputs[:referee].except!(
-        :first_name, :last_name, :phone, :email
+    referee = referees_repository.create(
+      form_outputs[:referee].extract!(
+        :number, :expiration_date
       ).merge(user_id: user.id)
     )
+    organizations_repository.add_to_user(user.id, form_outputs[:referee][:organization])
 
     Success(:success)
   end

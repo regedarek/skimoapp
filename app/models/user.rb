@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :referee
+  has_many :user_organizations
+  has_many :organizations, through: :user_organizations
 
   validates :first_name, presence: true
   validates :last_name, presence: true
