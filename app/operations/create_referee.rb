@@ -28,7 +28,7 @@ class CreateReferee
         :number, :expiration_date
       ).merge(user_id: user.id)
     )
-    organizations_repository.add_to_user(user.id, form_outputs[:referee][:organization])
+    organizations_repository.assign_to_user(user.id, form_outputs[:referee][:organization])
 
     Success(:success)
   end
