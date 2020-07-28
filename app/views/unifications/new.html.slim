@@ -17,4 +17,11 @@
           = f.date_field :exact_date, class: 'form-control'
 
         .form-group
+          = f.label :referees
+          = f.select :referees,
+            Referee.all.map{|r| [r.display_name, r.id]},
+            {class: 'form-control',include_blank: false, include_hidden: false},
+            {multiple: true}
+
+        .form-group
           = f.submit 'Dodaj unifikację', class: 'btn btn-primary'

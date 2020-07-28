@@ -10,7 +10,7 @@ class UnificationsController < ApplicationController
   end
 
   def new
-    @unification = UnificationEntity.new
+    @unification = Unification.new
   end
 
   def create

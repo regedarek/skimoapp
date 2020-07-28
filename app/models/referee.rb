@@ -6,7 +6,7 @@ class Referee < ApplicationRecord
   validates :number, uniqueness: true, allow_nil: true
 
   def active?
-    Time.zone.now < expiration_date.to_date
+    Time.zone.now < expiration.to_date
   end
 
   def display_name
@@ -14,6 +14,14 @@ class Referee < ApplicationRecord
       user.display_name
     else
       "#{first_name} #{last_name}"
+    end
+  end
+
+  def expiration
+    if unifications.any?
+      unifications.order(:exact_date).last.exact_date
+    else
+      expiration_date
     end
   end
 

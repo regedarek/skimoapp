@@ -13,6 +13,7 @@ require("packs/easing")
 require("packs/grayscale")
 require("trix")
 require("@rails/actiontext")
+require('select2')
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,6 +23,13 @@ import 'css/pages'
 import 'css/footer'
 import 'slick-carousel'
 import 'css/actiontext.scss'
+
+import select2 from 'select2';
+import 'select2/dist/css/select2.css';
+
+$(document).ready(function() {
+  $('select').select2();
+});
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -52,6 +60,3 @@ $(document).on('turbolinks:load', function() {
         }]
     });
 });
-
-require("trix")
-require("@rails/actiontext")

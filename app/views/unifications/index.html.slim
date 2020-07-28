@@ -6,7 +6,7 @@
         h4.alert-heading Unifikacje
   .row
     .col
-      table.table
+      table.table.table-sm
         thead.thead-dark
           tr
             th scope="col"  Nr
@@ -20,3 +20,6 @@
               td = unification.name
               td = truncate(strip_tags(unification.description.to_s), length: 50)
               td = unification.exact_date
+            - unification.referees.each do |referee|
+              tr
+                td colspan="4" = referee.display_name
