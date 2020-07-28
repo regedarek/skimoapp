@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :email, uniqueness: true
 
   has_one_attached :avatar
   after_commit :add_default_avatar, on: %i(create update)

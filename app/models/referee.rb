@@ -1,5 +1,7 @@
 class Referee < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
+
+  validates :number, uniqueness: true
 
   def active?
     Time.zone.now < expiration_date.to_date

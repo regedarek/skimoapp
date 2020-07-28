@@ -31,7 +31,7 @@ class CreateReferee
       )
       organizations_repository.assign_to_user(user.id, form_outputs[:referee][:organization])
     else
-      referees_repository.create(
+      referee = referees_repository.create(
         form_outputs[:referee].extract!(
           :number, :expiration_date, :first_name, :last_name, :organization
         )
