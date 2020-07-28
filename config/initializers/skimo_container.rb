@@ -13,8 +13,16 @@ class SkimoContainer
     OrganizationsRepository.new
   end
 
+  register "repositories.unifications_repository" do
+    UnificationsRepository.new
+  end
+
   register "operations.create_referee" do
     CreateReferee.new
+  end
+
+  register "operations.create_unification" do
+    CreateUnification.new
   end
 end
 

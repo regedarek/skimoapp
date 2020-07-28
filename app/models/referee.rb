@@ -1,5 +1,7 @@
 class Referee < ApplicationRecord
   belongs_to :user, optional: true
+  has_many :referee_unifications
+  has_many :unifications, through: :referee_unifications
 
   validates :number, uniqueness: true, allow_nil: true
 

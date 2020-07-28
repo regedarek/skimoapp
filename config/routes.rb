@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   get '/tablica' => "high_voltage/pages#show", id: 'tablica', :as => :user_root
 
   resources :referees, path: 'sedziowie'
+  resources :unifications, path: 'unifikacje'
   get 'puchar', to: 'high_voltage/pages#show', id: 'puchar'
 end

@@ -1,0 +1,20 @@
+.container
+  .row
+    .col
+      h1 Dodaj unifikację
+      = form_for(@unification, as: :unification, url: unifications_path) do |f|
+
+        .form-group
+          = f.label :name
+          = f.text_field :name, class: 'form-control'
+
+        .form-group
+          = f.label :description
+          = f.rich_text_area :description
+
+        .form-group
+          = f.label :exact_date
+          = f.date_field :exact_date, class: 'form-control'
+
+        .form-group
+          = f.submit 'Dodaj unifikację', class: 'btn btn-primary'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_090752) do
+ActiveRecord::Schema.define(version: 2020_07_28_141555) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -50,18 +50,34 @@ ActiveRecord::Schema.define(version: 2020_07_28_090752) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "referee_unifications", force: :cascade do |t|
+    t.integer "referee_id"
+    t.integer "unification_id"
+  end
+
   create_table "referees", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "number", null: false
+    t.integer "user_id"
+    t.integer "number"
     t.date "expiration_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "organization"
+    t.index ["number"], name: "index_referees_on_number", unique: true
+    t.index ["user_id", "number"], name: "index_referees_on_user_id_and_number", unique: true
   end
 
   create_table "seasons", force: :cascade do |t|
     t.integer "year"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "unifications", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.date "exact_date"
   end
 
   create_table "user_organizations", force: :cascade do |t|

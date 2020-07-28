@@ -1,0 +1,22 @@
+.container
+  .row
+    .col
+      = image_tag 'referees.jpg', class: 'img-fluid'
+      .alert.alert-success role="alert" 
+        h4.alert-heading Unifikacje
+  .row
+    .col
+      table.table
+        thead.thead-dark
+          tr
+            th scope="col"  Nr
+            th scope="col"  Nazwa
+            th scope="col"  Opis
+            th scope="col"  Data
+        tbody
+          - @unifications.each_with_index do |unification, index|
+            tr
+              th scope="row" = index + 1
+              td = unification.name
+              td = truncate(strip_tags(unification.description.to_s), length: 50)
+              td = unification.exact_date
