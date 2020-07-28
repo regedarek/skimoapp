@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_26_130939) do
+ActiveRecord::Schema.define(version: 2020_07_28_090752) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 2020_07_26_130939) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "athletes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "number", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["number"], name: "index_athletes_on_number", unique: true
+    t.index ["user_id", "number"], name: "index_athletes_on_user_id_and_number", unique: true
+    t.index ["user_id"], name: "index_athletes_on_user_id", unique: true
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "name"
     t.string "url"
@@ -46,6 +56,9 @@ ActiveRecord::Schema.define(version: 2020_07_26_130939) do
     t.date "expiration_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["number"], name: "index_referees_on_number", unique: true
+    t.index ["user_id", "number"], name: "index_referees_on_user_id_and_number", unique: true
+    t.index ["user_id"], name: "index_referees_on_user_id", unique: true
   end
 
   create_table "seasons", force: :cascade do |t|
