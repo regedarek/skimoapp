@@ -26,7 +26,7 @@ import 'slick-carousel'
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
     $('.customer-logos').slick({
         slidesToShow: 6,
         slidesToScroll: 1,

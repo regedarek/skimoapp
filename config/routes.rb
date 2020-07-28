@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   end
 
   resources :referees, path: 'sedziowie'
+  get 'puchar', to: 'high_voltage/pages#show', id: 'puchar'
 end
