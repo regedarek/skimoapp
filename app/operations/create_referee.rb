@@ -8,7 +8,7 @@ class CreateReferee
       required(:last_name).filled(:string)
       optional(:phone).maybe(:string)
       optional(:number).maybe(:string)
-      required(:email).filled(:string)
+      optional(:email).maybe(:string)
       optional(:organization).maybe(:string)
       required(:expiration_date).filled(:string)
     end
@@ -18,17 +18,25 @@ class CreateReferee
     form_outputs = CreateRefereeSchema.call(raw_params.to_unsafe_h)
     return Failure([:invalid, raw_params.to_unsafe_hash, form_outputs.errors]) if form_outputs.failure?
 
-    user = users_repository.find_or_create(
-      form_outputs[:referee].extract!(
-        :first_name, :last_name, :phone, :email
-      ).merge(password: 'test12')
-    )
-    referee = referees_repository.create(
-      form_outputs[:referee].extract!(
-        :number, :expiration_date
-      ).merge(user_id: user.id)
-    )
-    organizations_repository.assign_to_user(user.id, form_outputs[:referee][:organization])
+    if form_outputs[:email]
+      user = users_repository.find_or_create(
+        form_outputs[:referee].extract!(
+          :first_name, :last_name, :phone, :email
+        ).merge(password: 'test12')
+      )
+      referee = referees_repository.create(
+        form_outputs[:referee].extract!(
+          :number, :expiration_date
+        ).merge(user_id: user.id)
+      )
+      organizations_repository.assign_to_user(user.id, form_outputs[:referee][:organization])
+    else
+      referees_repository.create(
+        form_outputs[:referee].extract!(
+          :number, :expiration_date, :first_name, :last_name, :organization
+        )
+      )
+    end
 
     Success(:success)
   end

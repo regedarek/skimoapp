@@ -18,8 +18,8 @@
           - @referees.each_with_index do |referee, index|
             tr
               th scope="row" = index + 1
-              td = referee.user.display_name
-              td = referee.user.organizations.map(&:name).to_sentence
+              td = referee.display_name
+              td = referee.organizations.to_sentence
               td = referee.number
               td = referee.expiration_date
 
