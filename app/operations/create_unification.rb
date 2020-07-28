@@ -13,7 +13,7 @@ class CreateUnification
 
   def call(raw_params)
     form_outputs = CreateUnificationSchema.call(raw_params.to_unsafe_h)
-    return Failure([:invalid, raw_params.to_unsafe_hash, form_outputs.errors]) if form_outputs.failure?
+    return Failure([:invalid, raw_params.to_unsafe_hash[:unification].extract!(:name, :description, :exact_date), form_outputs.errors]) if form_outputs.failure?
 
     unification = unifications_repository.create(
       form_outputs[:unification].extract!(:name, :description, :exact_date)

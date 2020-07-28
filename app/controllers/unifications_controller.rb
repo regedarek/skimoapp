@@ -24,7 +24,7 @@ class UnificationsController < ApplicationController
       end
 
       m.failure(:invalid) do |_code, params, errors|
-        @unification = Unification.new(params[:unification])
+        @unification = Unification.new(params)
         render :new
       end
     end
