@@ -20,7 +20,7 @@ class CreateUnification
     )
     form_outputs[:unification][:referees].each do |referee_id|
       unification.referee_unifications.create referee_id: referee_id
-      Referee.find(referee_id).update expiration_date: unification.exact_date
+      Referee.find(referee_id).update expiration_date: unification.exact_date + 3.years
     end
 
     Success(:success)
