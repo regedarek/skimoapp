@@ -1,0 +1,17 @@
+.container
+  .row
+    .col
+      .alert.alert-info role="alert" 
+        h4.alert-heading Tablica informacyjna
+
+  - if current_user.referee
+    .row
+      .col
+        - if current_user.referee.active?
+          .alert.alert-success role="alert" 
+            h4.alert-heading Status sędziego
+            p = sanitize "Twoje uprawnienia są ważne do <b>#{current_user.referee.expiration_date}</b>"
+        - else
+          .alert.alert-danger role="alert" 
+            h4.alert-heading Status sędziego
+            p = sanitize "Twoje uprawnienia wygasły <b>#{current_user.referee.expiration_date}</b>"

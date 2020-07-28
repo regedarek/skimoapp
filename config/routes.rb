@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'zaloguj', to: 'devise/sessions#new'
   end
+  get '/tablica' => "high_voltage/pages#show", id: 'tablica', :as => :user_root
 
   resources :referees, path: 'sedziowie'
   get 'puchar', to: 'high_voltage/pages#show', id: 'puchar'
