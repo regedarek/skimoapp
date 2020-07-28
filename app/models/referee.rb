@@ -6,7 +6,7 @@ class Referee < ApplicationRecord
   validates :number, uniqueness: true, allow_nil: true
 
   def active?
-    Time.zone.now < expiration.to_date
+    Time.zone.now < expiration_date.to_date
   end
 
   def display_name
