@@ -1,0 +1,21 @@
+.container
+  .row
+    .col
+      .alert.alert-primary role="alert" 
+        h4.alert-heading Zgłoszenia do Pucharu 2021/2022
+  .row
+    .col
+      table.table.table-sm
+        thead.thead-dark
+          tr
+            th scope="col"  Nr
+            th scope="col"  Nazwa
+            th scope="col"  Opis
+            th scope="col"  Data
+        tbody
+          - @edition_applies.each_with_index do |apply, index|
+            tr
+              th scope="row" = index + 1
+              td = apply.name
+              td = truncate(strip_tags(apply.description.to_s), length: 50)
+              td = apply.start_date

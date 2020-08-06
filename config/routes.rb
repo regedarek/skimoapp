@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   resources :referees, path: 'sedziowie'
   resources :unifications, path: 'unifikacje'
+  resources :edition_applies, path: 'edycje'
   get 'puchar', to: 'high_voltage/pages#show', id: 'puchar'
 end

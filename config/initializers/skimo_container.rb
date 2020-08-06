@@ -5,6 +5,10 @@ class SkimoContainer
     RefereesRepository.new
   end
 
+  register "repositories.editions_repository" do
+    EditionsRepository.new
+  end
+
   register "repositories.users_repository" do
     UsersRepository.new
   end
@@ -23,6 +27,10 @@ class SkimoContainer
 
   register "operations.create_unification" do
     CreateUnification.new
+  end
+
+  register "operations.apply_edition" do
+    ApplyEdition.new
   end
 end
 
