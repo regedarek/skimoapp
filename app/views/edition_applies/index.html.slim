@@ -16,6 +16,6 @@
           - @edition_applies.each_with_index do |apply, index|
             tr
               th scope="row" = index + 1
-              td = apply.name
+              td = link_to apply.name, edition_apply_path(apply)
               td = truncate(strip_tags(apply.description.to_s), length: 50)
               td = apply.start_date

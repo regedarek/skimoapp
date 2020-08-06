@@ -29,4 +29,8 @@ class EditionAppliesController < ApplicationController
       end
     end
   end
+
+  def show
+    @apply = EditionApply.find(params[:id])
+  end
 end

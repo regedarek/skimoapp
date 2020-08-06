@@ -1,0 +1,8 @@
+.container
+  .row
+    .col
+      .alert.alert-success role="alert" 
+        h4.alert-heading = "Zgłoszenie: #{@apply.name}"
+  .row
+    .col
+      = @apply.description.body.to_s
