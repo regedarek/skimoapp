@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_141555) do
+ActiveRecord::Schema.define(version: 2020_08_06_120046) do
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +51,24 @@ ActiveRecord::Schema.define(version: 2020_07_28_141555) do
     t.index ["number"], name: "index_athletes_on_number", unique: true
     t.index ["user_id", "number"], name: "index_athletes_on_user_id_and_number", unique: true
     t.index ["user_id"], name: "index_athletes_on_user_id", unique: true
+  end
+
+  create_table "edition_applies", force: :cascade do |t|
+    t.string "name"
+    t.string "organization"
+    t.integer "season_id"
+    t.text "description"
+    t.datetime "start_date"
+    t.string "address"
+    t.string "program"
+    t.string "map_default"
+    t.integer "volounteers"
+    t.text "categories"
+    t.text "technical_restrictions"
+    t.text "accomodation"
+    t.text "contact"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "organizations", force: :cascade do |t|
