@@ -24,9 +24,16 @@ pl:
             last_name:
               blank: nie zostało wypełnione
     models:
+      edition_apply:
+        one: Edycja
       user:
         one: Użytkownik
     attributes:
+      edition_apply:
+        name: Nazwa
+        description: Opis
+        start_date: Data zawodów
+        program_file: Program zawodów
       user:
         first_name: "Imię"
         last_name: "Nazwisko"

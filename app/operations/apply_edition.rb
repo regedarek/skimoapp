@@ -2,21 +2,12 @@ class ApplyEdition
   include Import["repositories.editions_repository"]
   include Dry::Monads[:result]
 
-  ApplyEditionSchema = Dry::Schema.Params do
-    required(:edition_apply).hash do
-      required(:name).filled(:string)
-      required(:description).filled(:string)
-      required(:start_date).filled(:string)
-    end
-  end
+  def call(params)
+    apply = EditionApply.new(params)
+    return Failure([:invalid, apply]) if apply.invalid?
 
-  def call(raw_params)
-    form_outputs = ApplyEditionSchema.call(raw_params.to_unsafe_h)
-    return Failure([:invalid, raw_params.to_unsafe_hash[:edition_apply].extract!(:name, :description, :start_date), form_outputs.errors]) if form_outputs.failure?
-
-    apply = editions_repository.apply(
-      form_outputs[:edition_apply].extract!(:name, :description, :start_date)
-    )
+    apply_record = editions_repository.apply(params)
+    apply_record.program_file.attach(params[:program_file])
 
     Success(:success)
   end

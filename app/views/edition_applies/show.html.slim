@@ -6,3 +6,11 @@
   .row
     .col
       = @apply.description.body.to_s
+
+  .row
+    .col
+      = @apply.start_date
+
+  .row
+    .col
+      = render 'active_storage/blobs/blob', blob: @apply.program_file

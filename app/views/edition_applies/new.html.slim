@@ -2,11 +2,26 @@
   .row
     .col
       h1 Zgłoś edycję
+
+  .row
+    .col
+      - if @edition_apply.errors.any?
+        #error_explanation
+          ul
+            - @edition_apply.errors.full_messages.each do |msg|
+              li = msg
+
+  .row
+    .col
       = form_for(@edition_apply, as: :edition_apply, url: edition_applies_path) do |f|
 
         .form-group
           = f.label :name
           = f.text_field :name, class: 'form-control'
+
+        .form-group
+          = f.label :program_file
+          = f.file_field :program_file
 
         .form-group
           = f.label :description

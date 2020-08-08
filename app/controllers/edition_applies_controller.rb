@@ -14,7 +14,7 @@ class EditionAppliesController < ApplicationController
   end
 
   def create
-    Dry::Matcher::ResultMatcher.(apply_edition.call(params)) do |m|
+    Dry::Matcher::ResultMatcher.(apply_edition.call(edition_params)) do |m|
       m.success do |v|
         redirect_to edition_applies_path, notice: 'Dziękujemy za zgłoszenie!'
       end
@@ -23,8 +23,8 @@ class EditionAppliesController < ApplicationController
         "No such thing"
       end
 
-      m.failure(:invalid) do |_code, params, errors|
-        @edition_apply = EditionApply.new(params)
+      m.failure(:invalid) do |_code, apply|
+        @edition_apply = apply
         render :new
       end
     end
@@ -32,5 +32,9 @@ class EditionAppliesController < ApplicationController
 
   def show
     @apply = EditionApply.find(params[:id])
+  end
+
+  def edition_params
+    params.require(:edition_apply).permit(:name, :program_file, :start_date, :description)
   end
 end

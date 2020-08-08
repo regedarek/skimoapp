@@ -23,11 +23,13 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'honeybadger', '~> 4.0'
 gem "slim-rails"
+gem 'cancancan'
 
 # Use Active Storage variant
 gem "mini_magick"
 gem 'image_processing', '~> 1.2'
 gem 'activestorage-openstack', '1.4.1'
+gem 'rails-i18n'
 
 gem 'dry-struct'
 gem 'dry-schema'
