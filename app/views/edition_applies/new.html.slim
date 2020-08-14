@@ -1,10 +1,15 @@
 .container
   .row
     .col
-      h1 Zgłoś edycję
+      h1 Zgłoś edycję do sezonu 2020/2021
 
   .row
     .col
+      .alert.alert-warning role='alert'
+        | Przeczytaj regulamin zawodów w narciarstwie wysokogórskim
+        br
+        = link_to 'Regulamin zawodów PZA', 'http://pza.org.pl/wp-content/uploads/2017/12/reg_zaw_nw_2018.pdf'
+
       - if @edition_apply.errors.any?
         #error_explanation
           ul
