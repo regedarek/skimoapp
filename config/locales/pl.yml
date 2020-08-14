@@ -30,10 +30,20 @@ pl:
         one: Użytkownik
     attributes:
       edition_apply:
-        name: Nazwa
-        description: Opis
+        name: Nazwa zawodów
+        description: Opis zawodów oraz kilka zdjęć
         start_date: Data zawodów
         program_file: Program zawodów
+        organization: Organizator
+        map_1: Trasa podstawowa
+        map_2: Trasa zastępcza(lawinowo)
+        map_3: Trasa zastępcza(niedobór śniegu)
+        address: Adres biura zawodów
+        volounteers: Ilość wolontariuszy
+        categories: Kategorie zawodników
+        technical_restrictions: Wymogi sprzętowe
+        accomodation: Możliwość zakwaterowania
+        contact: Możliwość kontaktu(www, fb, email)
       user:
         first_name: "Imię"
         last_name: "Nazwisko"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_06_120046) do
+ActiveRecord::Schema.define(version: 2020_08_14_100548) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_120046) do
 
   create_table "edition_applies", force: :cascade do |t|
     t.string "name"
-    t.string "organization"
+    t.text "organization"
     t.integer "season_id"
     t.text "description"
     t.datetime "start_date"

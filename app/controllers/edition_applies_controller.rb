@@ -16,7 +16,7 @@ class EditionAppliesController < ApplicationController
   def create
     Dry::Matcher::ResultMatcher.(apply_edition.call(edition_params)) do |m|
       m.success do |v|
-        redirect_to edition_applies_path, notice: 'Dziękujemy za zgłoszenie!'
+        redirect_to root_path, notice: 'Dziękujemy za zgłoszenie!'
       end
 
       m.failure(:not_found) do
@@ -35,6 +35,10 @@ class EditionAppliesController < ApplicationController
   end
 
   def edition_params
-    params.require(:edition_apply).permit(:name, :program_file, :start_date, :description)
+    params.require(:edition_apply).permit(
+      :name, :program_file, :start_date, :description,
+      :address, :map_1, :map_2, :map_3, :categories, :technical_restrictions,
+      :accomodation, :contact, :organization, :volounteers
+    )
   end
 end

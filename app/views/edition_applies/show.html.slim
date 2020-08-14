@@ -1,16 +1,68 @@
 .container
   .row
     .col
-      .alert.alert-success role="alert" 
-        h4.alert-heading = "Zgłoszenie: #{@apply.name}"
+      h4.alert-heading = "#{@apply.name}"
   .row
     .col
+      b Data zawodów
+      br
+      = @apply.start_date.to_date
+      hr
+  .row
+    .col
+      b Organizator
+      = @apply.organization.body.to_s
+      hr
+  .row
+    .col
+      b Opis zawodów
       = @apply.description.body.to_s
-
+      hr
   .row
     .col
-      = @apply.start_date
+      b Adres zakwaterowania
+      br
+      = @apply.address
+      hr
+  .row
+    .col
+      b Wolontariusze
+      br
+      = @apply.volounteers
+      hr
+  .row
+    .col
+      b Kategorie
+      = @apply.categories.body.to_s
+      hr
+  .row
+    .col
+      b Wymogi sprzętowe
+      = @apply.technical_restrictions.body.to_s
+      hr
+  .row
+    .col
+      b Zakwaterowanie
+      = @apply.accomodation.body.to_s
+      hr
+  .row
+    .col
+      b Kontakt
+      = @apply.contact.body.to_s
+      hr
 
   .row
     .col
       = render 'active_storage/blobs/blob', blob: @apply.program_file
+
+  .row
+    .col
+      = render 'active_storage/blobs/blob', blob: @apply.map_1
+
+  .row
+    .col
+      = render 'active_storage/blobs/blob', blob: @apply.map_2
+
+  .row
+    .col
+      = render 'active_storage/blobs/blob', blob: @apply.map_3
