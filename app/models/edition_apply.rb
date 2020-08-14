@@ -11,4 +11,5 @@ class EditionApply < ApplicationRecord
   has_rich_text :organization
 
   validates :name, :organization, :address, :volounteers, :map_1, :map_2, :map_3, :categories, :technical_restrictions, :accomodation, :contact, :description, :program_file, :start_date, presence: true
+  validates :terms, acceptance: true
 end

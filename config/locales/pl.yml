@@ -39,6 +39,7 @@ pl:
         map_2: Trasa zastępcza(lawinowo)
         map_3: Trasa zastępcza(niedobór śniegu)
         address: Adres biura zawodów
+        terms: Akceptuję warunki zgłoszenia
         volounteers: Ilość wolontariuszy
         categories: Kategorie zawodników
         technical_restrictions: Wymogi sprzętowe

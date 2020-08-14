@@ -90,5 +90,17 @@
       = f.label :description
       = f.rich_text_area :description
 
+    .alert.alert-warning role='alert'
+      b Akceptuję:
+      ul
+        li Regulamin Pucharu Polski
+        li Regulamin Zawodów
+      b Zobowiązuję się dodać obowiązkowe pole "Numer zawodnika" oraz link do rejestracji zawodnika na stronie https://skimo.pl
+
+      .form-check
+        = f.check_box :terms, class: 'form-check-input'
+        = f.label :terms, class: 'form-check-label'
+
+
     .form-group
       = f.submit 'Zgłoś zawody', class: 'btn btn-primary'

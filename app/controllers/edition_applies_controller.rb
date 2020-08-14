@@ -38,7 +38,7 @@ class EditionAppliesController < ApplicationController
     params.require(:edition_apply).permit(
       :name, :program_file, :start_date, :description,
       :address, :map_1, :map_2, :map_3, :categories, :technical_restrictions,
-      :accomodation, :contact, :organization, :volounteers
+      :accomodation, :contact, :organization, :volounteers, :terms
     )
   end
 end
