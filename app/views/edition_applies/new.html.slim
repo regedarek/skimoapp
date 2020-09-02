@@ -91,11 +91,13 @@
       = f.rich_text_area :description
 
     .alert.alert-warning role='alert'
-      b Akceptuję:
+      h4 Warunki zgłoszenia
       ul
-        li Regulamin Pucharu Polski
-        li Regulamin Zawodów
-      b Zobowiązuję się dodać obowiązkowe pole "Numer zawodnika" oraz link do rejestracji zawodnika na stronie https://skimo.pl
+        li
+          b Akceptuję 
+          = link_to 'Regulamin zawodów PZA', 'http://pza.org.pl/wp-content/uploads/2017/12/reg_zaw_nw_2018.pdf'
+        li
+          b Formularz zapisów będzie zawierał pole numer zawodnika oraz link do rejestracji na stronie skimo.pl
 
       .form-check
         = f.check_box :terms, class: 'form-check-input'
