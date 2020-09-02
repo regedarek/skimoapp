@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_14_100548) do
+ActiveRecord::Schema.define(version: 2020_09_02_090255) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -69,6 +69,26 @@ ActiveRecord::Schema.define(version: 2020_08_14_100548) do
     t.text "contact"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "instructor_unifications", force: :cascade do |t|
+    t.integer "instructor_id"
+    t.integer "unification_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "instructors", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "number"
+    t.date "expiration_date"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "organization"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["number"], name: "index_instructors_on_number", unique: true
+    t.index ["user_id", "number"], name: "index_instructors_on_user_id_and_number", unique: true
   end
 
   create_table "organizations", force: :cascade do |t|
