@@ -1,4 +1,6 @@
 class Referee < ApplicationRecord
+  default_scope { order('expiration_date IS NULL, expiration_date DESC') }
+
   belongs_to :user, optional: true
   has_many :referee_unifications
   has_many :unifications, through: :referee_unifications

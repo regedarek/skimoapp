@@ -44,5 +44,5 @@
               th scope="row" = index + 1
               td = instructor.display_name
               td = instructor.organizations.to_sentence
-              td = instructor.expiration_date
+              td = instructor.expiration_date || 'brak'
               td

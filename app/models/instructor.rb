@@ -1,5 +1,5 @@
 class Instructor < ApplicationRecord
-  default_scope { order(expiration_date: :desc) }
+  default_scope { order('expiration_date IS NULL, expiration_date DESC') }
 
   belongs_to :user, optional: true
   has_many :instructor_unifications
