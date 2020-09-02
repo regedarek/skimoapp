@@ -13,7 +13,6 @@
             th scope="col"  Imię i nazwisko
             th scope="col"  Klub
             th scope="col"  Data ważności
-            th scope="col"  Typ
         tbody
           - @instructors.where(expiration_date: Time.zone.now..Float::INFINITY).each_with_index do |instructor, index|
             tr
@@ -21,7 +20,6 @@
               td = instructor.display_name
               td = instructor.organizations.to_sentence
               td = instructor.expiration_date
-              td
 
 
   .row
@@ -37,7 +35,6 @@
             th scope="col"  Imię i nazwisko
             th scope="col"  Klub
             th scope="col"  Data ważności
-            th scope="col"  Typ
         tbody
           - @instructors.where(expiration_date: '1900-01-01'.to_date..Date.today).or(@instructors.where(expiration_date: nil)).each_with_index do |instructor, index|
             tr
@@ -45,4 +42,3 @@
               td = instructor.display_name
               td = instructor.organizations.to_sentence
               td = instructor.expiration_date || 'brak'
-              td
