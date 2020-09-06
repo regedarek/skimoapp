@@ -25,6 +25,10 @@ class SkimoContainer
     CreateReferee.new
   end
 
+  register "operations.update_referee" do
+    UpdateReferee.new
+  end
+
   register "operations.create_unification" do
     CreateUnification.new
   end

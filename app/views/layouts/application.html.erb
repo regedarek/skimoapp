@@ -67,9 +67,11 @@
                     </div>
                   </li>
                 <% else %>
+                  <% if false %>
                   <li class="nav-item">
                     <%= link_to(t('.sign_in_or_sign_up'), new_user_session_path, class: 'nav-link js-scroll-trigger text-danger') %>
                   </li>
+                <% end %>
                 <% end %>
               </ul>
           </div>

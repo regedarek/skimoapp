@@ -1,0 +1,6 @@
+.container
+  .row
+    .col
+      h1 Aktualizuj sędziego
+      = form_for(@referee, as: :referee, url: referee_path(@referee), method: :put) do |f|
+        = render 'form', f: f

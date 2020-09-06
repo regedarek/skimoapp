@@ -2,7 +2,7 @@ require 'dry/monads'
 require "dry/matcher/result_matcher"
 
 class RefereesController < ApplicationController
-  include Import["operations.create_referee"]
+  include Import["operations.create_referee", "operations.update_referee"]
   include Dry::Monads[:result]
 
   def index
@@ -22,7 +22,7 @@ class RefereesController < ApplicationController
   end
 
   def create
-    test = Dry::Matcher::ResultMatcher.(create_referee.call(params)) do |m|
+    Dry::Matcher::ResultMatcher.(create_referee.call(params)) do |m|
       m.success do |v|
         redirect_to referees_path, notice: 'Udało się'
       end
@@ -34,6 +34,27 @@ class RefereesController < ApplicationController
       m.failure(:invalid) do |_code, params, errors|
         @referee = RefereeEntity.new(params[:referee])
         render :new
+      end
+    end
+  end
+
+  def edit
+    @referee = Referee.find(params[:id]).to_entity
+  end
+
+  def update
+    Dry::Matcher::ResultMatcher.(update_referee.call(params)) do |m|
+      m.success do |v|
+        redirect_to referees_path, notice: 'Udało się'
+      end
+
+      m.failure(:not_found) do
+        "No such thing"
+      end
+
+      m.failure(:invalid) do |_code, params, errors|
+        @referee = Referee.new(params[:referee]).to_entity
+        render :edit
       end
     end
   end

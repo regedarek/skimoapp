@@ -14,6 +14,7 @@
             th scope="col"  Klub
             th scope="col"  Numer uprawnień
             th scope="col"  Data ważności
+            th
         tbody
           - @referees.where(expiration_date: Time.zone.now..Float::INFINITY).each_with_index do |referee, index|
             tr
@@ -22,6 +23,9 @@
               td = referee.organizations.to_sentence
               td = referee.number || 'aspirant'
               td = referee.expiration_date
+              td
+                = link_to edit_referee_path(referee.id) do
+                  = fa_icon "user-edit", style: 'color: red'
   .row
     .col
       .alert.alert-danger role="alert" 

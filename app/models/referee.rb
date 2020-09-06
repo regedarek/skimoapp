@@ -6,6 +6,7 @@ class Referee < ApplicationRecord
   has_many :unifications, through: :referee_unifications
 
   validates :number, uniqueness: true, allow_nil: true
+  delegate :email, :phone, :organizations, to: :user, allow_nil: true
 
   def active?
     Time.zone.now < expiration_date.to_date
@@ -29,9 +30,38 @@ class Referee < ApplicationRecord
 
   def organizations
     if user
-      user.organizations.map(&:name)
+      user.organizations.map(&:name).to_sentence
     else
-      [organization]
+      user_organizations
     end
+  end
+
+  def email
+    if user.present?
+      user.email
+    else
+      user_email
+    end
+  end
+
+  def phone
+    if user.present?
+      user.phone
+    else
+      user_phone
+    end
+  end
+
+  def to_entity
+    RefereeEntity.new(
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      phone: phone,
+      organizations: organizations,
+      expiration: expiration,
+      number: number,
+      user_id: user_id
+    )
   end
 end

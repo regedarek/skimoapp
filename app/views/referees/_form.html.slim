@@ -1,0 +1,44 @@
+.form-group
+  .form-row
+    .col
+      = f.label :first_name
+      = f.text_field :first_name, class: 'form-control'
+
+    .col
+      = f.label :last_name
+      = f.text_field :last_name, class: 'form-control'
+
+    .col
+      = f.label :user_id
+      = f.collection_select :user_id, User.all, :id, :display_name, {include_blank: 'Nie przypisano'}, {class: 'form-control'}
+
+.form-group
+  .form-row
+    .col
+      = f.label :number
+      = f.text_field :number, class: 'form-control'
+
+    .col
+      = f.label :expiration
+      = f.date_field :expiration, class: 'form-control'
+
+.form-group
+  - unless @referee.user?
+    .form-row
+      .col
+        = f.label :phone
+        = f.text_field :phone, class: 'form-control'
+
+      .col
+        = f.label :email
+        = f.email_field :email, class: 'form-control'
+
+    .form-row
+      .col
+        = f.label :organizations
+        = f.text_field :organizations, class: 'form-control'
+
+.form-group
+  .form-row
+    .col
+      = f.submit 'Zaktualizuj dane sędziego', class: 'btn btn-primary'

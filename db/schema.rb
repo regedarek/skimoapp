@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_02_090255) do
+ActiveRecord::Schema.define(version: 2020_09_06_163237) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -111,7 +111,9 @@ ActiveRecord::Schema.define(version: 2020_09_02_090255) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "organization"
+    t.string "user_organizations"
+    t.string "user_email"
+    t.string "user_phone"
     t.index ["number"], name: "index_referees_on_number", unique: true
     t.index ["user_id", "number"], name: "index_referees_on_user_id_and_number", unique: true
   end

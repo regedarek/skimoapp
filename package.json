@@ -2,6 +2,7 @@
   "name": "docker_rails",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
     "@rails/actioncable": "^6.0.0",
     "@rails/actiontext": "^6.0.3-1",
     "@rails/activestorage": "^6.0.0",
@@ -15,6 +16,7 @@
     "jquery.easing": "^1.4.1",
     "popper.js": "^1.16.1",
     "select2": "^4.0.13",
+    "select2-bootstrap-theme": "^0.1.0-beta.10",
     "slick": "^1.12.2",
     "slick-carousel": "^1.8.1",
     "trix": "^1.2.0",
