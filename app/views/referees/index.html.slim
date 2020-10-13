@@ -45,7 +45,11 @@
             tr
               th scope="row" = index + 1
               td = referee.display_name
-              td = referee.organizations.to_sentence
+              td
+                - if referee.organizations.is_a? Array
+                  = referee.organizations.to_sentence
+                - else 
+                  = referee.organizations
               td = referee.number || 'aspirant'
               td = referee.expiration_date
 
