@@ -53,7 +53,9 @@
 
   .row
     .col
-      = render 'active_storage/blobs/blob', blob: @apply.program_file
+      b Program
+      = @apply.program_content.body.to_s
+      hr
 
   .row
     .col

@@ -17,78 +17,7 @@
               li = msg
 
   = form_for(@edition_apply, as: :edition_apply, url: edition_applies_path) do |f|
-    .form-group
-      = f.label :name
-      = f.text_field :name, class: 'form-control'
-
-    .form-group
-      = f.label :start_date
-      = f.date_field :start_date, class: 'form-control'
-
-    .form-group
-      .alert.alert-primary role='alert'
-        | Opis organizatora zawodów wraz z kilkoma zdjęciami oraz logo
-      = f.label :organization
-      = f.rich_text_area :organization, class: 'form-control'
-
-    .form-row
-      .col-md-12
-        .alert.alert-primary role='alert'
-          | Program zawodów oraz mapy w zależności od warunków
-      .form-group.col-md-3
-        = f.label :program_file
-        br
-        = f.file_field :program_file
-
-      .form-group.col-md-3
-        = f.label :map_1
-        br
-        = f.file_field :map_1
-
-      .form-group.col-md-3
-        = f.label :map_2
-        br
-        = f.file_field :map_2
-
-      .form-group.col-md-3
-        = f.label :map_3
-        br
-        = f.file_field :map_3
-
-    .form-row
-      .col-md-12
-        .alert.alert-primary role='alert'
-          | Adres biura zawodów oraz zakładana potrzebna ilość organizatorów, sędziów oraz wolontariuszy
-      .form-group.col-md-6
-        = f.label :address
-        = f.text_field :address, class: 'form-control'
-      .form-group.col-md-6
-        = f.label :volounteers
-        = f.number_field :volounteers, class: 'form-control'
-
-    .form-row
-      .form-group.col-md-6
-        = f.label :categories
-        = f.rich_text_area :categories
-
-      .form-group.col-md-6
-        = f.label :technical_restrictions
-        = f.rich_text_area :technical_restrictions
-
-    .form-row
-      .form-group.col-md-6
-        = f.label :accomodation
-        = f.rich_text_area :accomodation
-
-      .form-group.col-md-6
-        = f.label :contact
-        = f.rich_text_area :contact
-
-    .form-group
-      .alert.alert-primary role='alert'
-        | Opis zawodów, historia wraz z kilkoma zdjęciami oraz logo zawodów
-      = f.label :description
-      = f.rich_text_area :description
+    = render 'form', f: f
 
     .alert.alert-warning role='alert'
       h4 Warunki zgłoszenia

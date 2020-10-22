@@ -17,7 +17,6 @@ class UpdateReferee
 
   def call(raw_params)
     form_outputs = UpdateRefereeSchema.call(raw_params.to_unsafe_h)
-    byebug
     return Failure([:invalid, raw_params.to_unsafe_hash, form_outputs.errors]) if form_outputs.failure?
 
     if form_outputs[:user_id]
@@ -34,7 +33,6 @@ class UpdateReferee
       )
     end
 
-    byebug
     referee = referees_repository.update(
       form_outputs[:referee].extract!(
         :number, :expiration

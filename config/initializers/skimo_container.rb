@@ -36,6 +36,10 @@ class SkimoContainer
   register "operations.apply_edition" do
     ApplyEdition.new
   end
+
+  register "operations.update_edition" do
+    UpdateEdition.new
+  end
 end
 
 Import = Dry::AutoInject(SkimoContainer)

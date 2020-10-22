@@ -34,6 +34,7 @@ pl:
         description: Opis zawodów oraz kilka zdjęć
         start_date: Data zawodów
         program_file: Program zawodów
+        program_content: Program zawodów
         organization: Organizator
         map_1: Trasa podstawowa
         map_2: Trasa zastępcza(lawinowo)
