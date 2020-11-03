@@ -10,7 +10,7 @@
   .alert.alert-primary role='alert'
     | Opis organizatora zawodów wraz z kilkoma zdjęciami oraz logo
   = f.label :organization
-  = f.rich_text_area :organization, class: 'form-control'
+  = f.rich_text_area :organization
 
 .form-row
   .col-md-12
@@ -19,7 +19,7 @@
 
   .col-md-12
     = f.label :program_content
-    = f.rich_text_area :program_content, class: 'form-control'
+    = f.rich_text_area :program_content
 
 .form-row
   .form-group.col-md-4

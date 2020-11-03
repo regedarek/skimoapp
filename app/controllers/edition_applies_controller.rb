@@ -41,7 +41,7 @@ class EditionAppliesController < ApplicationController
   def update
     Dry::Matcher::ResultMatcher.(update_edition.call(params[:id], edition_params)) do |m|
       m.success do |v|
-        redirect_to root_path, notice: 'Zaktualizowano'
+        redirect_to edit_edition_apply_path(params[:id]), notice: 'Zaktualizowano'
       end
 
       m.failure(:not_found) do
