@@ -6,7 +6,7 @@ class EditionAppliesController < ApplicationController
   include Dry::Monads[:result]
 
   def index
-    @edition_applies = EditionApply.order(created_at: :asc)
+    @edition_applies = EditionApply.order(start_date: :asc)
   end
 
   def new
