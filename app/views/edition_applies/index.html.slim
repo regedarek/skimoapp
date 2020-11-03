@@ -8,14 +8,10 @@
       table.table.table-sm
         thead.thead-dark
           tr
-            th scope="col"  Nr
             th scope="col"  Nazwa
-            th scope="col"  Opis
             th scope="col"  Data
         tbody
           - @edition_applies.each_with_index do |apply, index|
             tr
-              th scope="row" = index + 1
-              td = link_to apply.name, edition_apply_path(apply)
-              td = truncate(strip_tags(apply.description.to_s), length: 50)
-              td = apply.start_date
+              td = link_to apply.name, edit_edition_apply_path(apply)
+              td = apply.start_date.to_date

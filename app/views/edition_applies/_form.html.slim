@@ -22,18 +22,29 @@
     = f.rich_text_area :program_content
 
 .form-row
-  .form-group.col-md-4
+  .form-group.col-md-6
     = f.label :map_1
+    - if @edition_apply.map_1.attached?
+      = image_tag @edition_apply.map_1
+  .form-group.col-md-6
     br
     = f.file_field :map_1
 
-  .form-group.col-md-4
+.form-row
+  .form-group.col-md-6
     = f.label :map_2
+    - if @edition_apply.map_2.attached?
+      = image_tag @edition_apply.map_2
+  .form-group.col-md-6
     br
     = f.file_field :map_2
 
-  .form-group.col-md-4
+.form-row
+  .form-group.col-md-6
     = f.label :map_3
+    - if @edition_apply.map_3.attached?
+      = image_tag @edition_apply.map_3
+  .form-group.col-md-6
     br
     = f.file_field :map_3
 
