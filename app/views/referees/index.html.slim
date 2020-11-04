@@ -24,7 +24,7 @@
               td = referee.number || 'aspirant'
               td = referee.expiration_date
               td
-                - if can? :update, referee
+                - if can? :manage, referee
                   = link_to edit_referee_path(referee.id) do
                     = fa_icon "user-edit", style: 'color: red'
   .row
