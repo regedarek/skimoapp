@@ -41,6 +41,7 @@
             th scope="col"  Klub
             th scope="col"  Numer uprawnień
             th scope="col"  Data ważności
+            th
         tbody
           - @referees.where(expiration_date: '1900-01-01'.to_date..Date.today).each_with_index do |referee, index|
             tr
@@ -53,6 +54,10 @@
                   = referee.organizations
               td = referee.number || 'aspirant'
               td = referee.expiration_date
+              td
+                - if can? :manage, referee
+                  = link_to edit_referee_path(referee.id) do
+                    = fa_icon "user-edit", style: 'color: red'
 
   .row
     .col
