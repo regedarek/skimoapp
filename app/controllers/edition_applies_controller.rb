@@ -10,10 +10,14 @@ class EditionAppliesController < ApplicationController
   end
 
   def new
+    authorize! :create, EditionApply
+
     @edition_apply = EditionApply.new
   end
 
   def create
+    authorize! :create, EditionApply
+
     Dry::Matcher::ResultMatcher.(apply_edition.call(edition_params)) do |m|
       m.success do |v|
         redirect_to root_path, notice: 'Dziękujemy za zgłoszenie!'
@@ -35,10 +39,14 @@ class EditionAppliesController < ApplicationController
   end
 
   def edit
+    authorize! :manage, EditionApply
+
     @edition_apply = EditionApply.find(params[:id])
   end
 
   def update
+    authorize! :manage, EditionApply
+
     Dry::Matcher::ResultMatcher.(update_edition.call(params[:id], edition_params)) do |m|
       m.success do |v|
         redirect_to edit_edition_apply_path(params[:id]), notice: 'Zaktualizowano'

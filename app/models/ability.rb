@@ -12,9 +12,11 @@ class Ability
 
   def default
     cannot :manage, Referee
+    cannot :create, EditionApply
   end
 
   def signed_in
     can :manage, Referee
+    can :manage, EditionApply
   end
 end
