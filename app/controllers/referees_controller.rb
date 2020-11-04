@@ -6,6 +6,7 @@ class RefereesController < ApplicationController
   include Dry::Monads[:result]
 
   def index
+    redirect_to root_path, alert: 'w przygotowaniu'
     @referees = Referee.all
   end
 
