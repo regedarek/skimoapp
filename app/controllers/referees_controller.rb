@@ -44,7 +44,7 @@ class RefereesController < ApplicationController
 
   def edit
     authorize! :manage, Referee
-    @referee = Referee.find(params[:id]).to_entity
+    @referee = Referee.find(params[:id])
   end
 
   def update

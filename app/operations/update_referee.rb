@@ -3,6 +3,7 @@ class UpdateReferee
   include Dry::Monads[:result]
 
   UpdateRefereeSchema = Dry::Schema.Params do
+    required(:id).filled(:integer)
     required(:referee).hash do
       required(:first_name).filled(:string)
       required(:last_name).filled(:string)
@@ -19,24 +20,9 @@ class UpdateReferee
     form_outputs = UpdateRefereeSchema.call(raw_params.to_unsafe_h)
     return Failure([:invalid, raw_params.to_unsafe_hash, form_outputs.errors]) if form_outputs.failure?
 
-    if form_outputs[:user_id]
-      referee = referees_repository.update(
-        form_outputs[:referee].extract!(
-          :user_id
-        )
-      )
-    else
-      referee = referees_repository.update(
-        form_outputs[:referee].extract!(
-          :last_name, :first_name
-        )
-      )
-    end
-
-    referee = referees_repository.update(
-      form_outputs[:referee].extract!(
-        :number
-      )
+    referees_repository.update(
+      id: form_outputs[:id],
+      attrs: form_outputs[:referee].extract!(:first_name, :last_name, :number)
     )
 
     Success(:success)
