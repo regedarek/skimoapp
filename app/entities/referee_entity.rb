@@ -13,7 +13,7 @@ class RefereeEntity < Dry::Struct
   attribute :id, Types::Integer.optional
   attribute :first_name, Types::String.optional
   attribute :last_name, Types::String.optional
-  attribute :user_id, Types::String.optional
+  attribute :user_id, Types::Coercible::Integer.optional
   attribute :email, Types::String.optional
   attribute :phone, Types::String.optional
   attribute :organizations, Types::String.optional
