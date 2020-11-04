@@ -16,7 +16,10 @@
   .form-row
     .col
       = f.label :number
-      = f.text_field :number, class: 'form-control'
+      - if @referee.number.nil?
+        = f.text_field :number, class: 'form-control', value: Referee.all.map(&:number).map(&:to_i).max
+      - else
+        = f.text_field :number, class: 'form-control'
 
     .col
       = f.label :expiration

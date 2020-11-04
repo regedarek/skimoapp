@@ -24,27 +24,30 @@
 .form-row
   .form-group.col-md-6
     = f.label :map_1
+    br
     - if @edition_apply.map_1.attached?
-      = image_tag @edition_apply.map_1
-  .form-group.col-md-6
+      = link_to image_tag(@edition_apply.map_1.variant(resize_to_limit: [100, 100])), @edition_apply.map_1, target: :_blank
+    br
     br
     = f.file_field :map_1
 
 .form-row
   .form-group.col-md-6
     = f.label :map_2
+    br
     - if @edition_apply.map_2.attached?
-      = image_tag @edition_apply.map_2
-  .form-group.col-md-6
+      = link_to image_tag(@edition_apply.map_2.variant(resize_to_limit: [100, 100])), @edition_apply.map_2, target: :_blank
+    br
     br
     = f.file_field :map_2
 
 .form-row
   .form-group.col-md-6
     = f.label :map_3
+    br
     - if @edition_apply.map_3.attached?
-      = image_tag @edition_apply.map_3
-  .form-group.col-md-6
+      = link_to image_tag(@edition_apply.map_3.variant(resize_to_limit: [100, 100])), @edition_apply.map_3, target: :_blank
+    br
     br
     = f.file_field :map_3
 
