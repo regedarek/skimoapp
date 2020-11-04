@@ -11,7 +11,7 @@ class UpdateReferee
       optional(:user_id).maybe(:string)
       optional(:email).maybe(:string)
       optional(:organizations).maybe(:string)
-      required(:expiration_date).filled(:string)
+      required(:expiration).filled(:string)
     end
   end
 
@@ -28,14 +28,14 @@ class UpdateReferee
     else
       referee = referees_repository.update(
         form_outputs[:referee].extract!(
-          :last_name, :first_name, :organizations
+          :last_name, :first_name
         )
       )
     end
 
     referee = referees_repository.update(
       form_outputs[:referee].extract!(
-        :number, :expiration
+        :number
       )
     )
 

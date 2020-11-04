@@ -54,6 +54,7 @@ class Referee < ApplicationRecord
 
   def to_entity
     RefereeEntity.new(
+      id: id,
       first_name: first_name,
       last_name: last_name,
       email: email,

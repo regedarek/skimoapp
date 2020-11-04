@@ -53,7 +53,7 @@ class RefereesController < ApplicationController
       end
 
       m.failure(:invalid) do |_code, params, errors|
-        @referee = Referee.new(params[:referee]).to_entity
+        @referee = Referee.find(params[:id])
         render :edit
       end
     end

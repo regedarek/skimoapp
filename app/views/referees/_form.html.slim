@@ -17,7 +17,7 @@
     .col
       = f.label :number
       - if @referee.number.nil?
-        = f.text_field :number, class: 'form-control', value: Referee.all.map(&:number).map(&:to_i).max
+        = f.text_field :number, class: 'form-control', value: Referee.all.map(&:number).map(&:to_i).max + 1
       - else
         = f.text_field :number, class: 'form-control'
 
