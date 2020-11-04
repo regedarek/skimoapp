@@ -12,6 +12,7 @@ class Ability
 
   def default
     cannot :manage, Referee
+    cannot :read, EditionApply
     cannot :create, EditionApply
   end
 

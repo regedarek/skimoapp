@@ -6,6 +6,8 @@ class EditionAppliesController < ApplicationController
   include Dry::Monads[:result]
 
   def index
+    authorize! :read, EditionApply
+
     @edition_applies = EditionApply.order(start_date: :asc)
   end
 

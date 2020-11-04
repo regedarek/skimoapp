@@ -6,7 +6,7 @@ class RefereesController < ApplicationController
   include Dry::Monads[:result]
 
   def index
-    authorize! :create, Referee
+    authorize! :read, Referee
 
     @referees = Referee.all
   end
