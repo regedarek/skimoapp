@@ -6,7 +6,8 @@ class RefereesController < ApplicationController
   include Dry::Monads[:result]
 
   def index
-    redirect_to root_path, alert: 'w przygotowaniu'
+    authorize! :create, Referee
+
     @referees = Referee.all
   end
 
@@ -23,6 +24,8 @@ class RefereesController < ApplicationController
   end
 
   def create
+    authorize! :create, Referee
+
     Dry::Matcher::ResultMatcher.(create_referee.call(params)) do |m|
       m.success do |v|
         redirect_to referees_path, notice: 'Udało się'
@@ -40,10 +43,12 @@ class RefereesController < ApplicationController
   end
 
   def edit
+    authorize! :manage, Referee
     @referee = Referee.find(params[:id]).to_entity
   end
 
   def update
+    authorize! :manage, Referee
     Dry::Matcher::ResultMatcher.(update_referee.call(params)) do |m|
       m.success do |v|
         redirect_to referees_path, notice: 'Udało się'
