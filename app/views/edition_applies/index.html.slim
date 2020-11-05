@@ -2,16 +2,26 @@
   .row
     .col
       .alert.alert-primary role="alert" 
-        h4.alert-heading Zgłoszenia do Pucharu 2021/2022
+        h4.alert-heading Edycje Pucharu Polski 2021/2022
   .row
     .col
-      table.table.table-sm
+      table.table
         thead.thead-dark
           tr
             th scope="col"  Nazwa
             th scope="col"  Data
-        tbody
+            th
+        tbody.thead-light
           - @edition_applies.each_with_index do |apply, index|
             tr
-              td = link_to apply.name, edit_edition_apply_path(apply)
-              td = apply.start_date.to_date
+              td scope='row' = link_to apply.name, season_edition_apply_path(year: params[:year], id: apply.slug)
+              td scope='row' = apply.start_date.to_date
+              td scope='row'
+                - if can? :manage, apply
+                  = link_to edit_season_edition_apply_path(year: params[:year], id: apply.slug) do
+                    = fa_icon "user-edit", style: 'color: red'
+
+  .row
+    .col
+      = link_to 'https://snw.kw.krakow.pl/kalendarz-zawodow-skimo-2020-2021/', target: :_blank do
+        button.btn.btn-success.btn-lg.btn-block type="button" Zobacz kalendarz zawodów z całego świata

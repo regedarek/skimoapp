@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :instructors, path: 'instruktorzy'
   resources :unifications, path: 'unifikacje'
   get 'edycje/zglos', to: 'edition_applies#new'
-  resources :edition_applies, path: 'edycje'
+  scope 'sezon/:year', as: :season do
+    resources :edition_applies, path: 'edycje'
+  end
   get 'puchar', to: 'high_voltage/pages#show', id: 'puchar'
 end

@@ -11,9 +11,8 @@ class Ability
   end
 
   def default
-    cannot :manage, Referee
-    cannot :read, EditionApply
-    cannot :create, EditionApply
+    can :read, EditionApply
+    can :read, Referee
   end
 
   def signed_in

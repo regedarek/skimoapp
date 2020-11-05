@@ -22,7 +22,7 @@ class EditionAppliesController < ApplicationController
 
     Dry::Matcher::ResultMatcher.(apply_edition.call(edition_params)) do |m|
       m.success do |v|
-        redirect_to root_path, notice: 'Dziękujemy za zgłoszenie!'
+        redirect_to season_edition_applies_path, notice: 'Dziękujemy za zgłoszenie!'
       end
 
       m.failure(:not_found) do
@@ -37,13 +37,13 @@ class EditionAppliesController < ApplicationController
   end
 
   def show
-    @apply = EditionApply.find(params[:id])
+    @apply = EditionApply.friendly.find(params[:id])
   end
 
   def edit
     authorize! :manage, EditionApply
 
-    @edition_apply = EditionApply.find(params[:id])
+    @edition_apply = EditionApply.friendly.find(params[:id])
   end
 
   def update
@@ -51,7 +51,7 @@ class EditionAppliesController < ApplicationController
 
     Dry::Matcher::ResultMatcher.(update_edition.call(params[:id], edition_params)) do |m|
       m.success do |v|
-        redirect_to edit_edition_apply_path(params[:id]), notice: 'Zaktualizowano'
+        redirect_to edit_season_edition_apply_path(v), notice: 'Zaktualizowano'
       end
 
       m.failure(:not_found) do
@@ -67,7 +67,7 @@ class EditionAppliesController < ApplicationController
 
   def edition_params
     params.require(:edition_apply).permit(
-      :name, :program_file, :start_date, :description,
+      :name, :program_file, :start_date, :description, :season_id,
       :address, :map_1, :map_2, :map_3, :categories, :technical_restrictions,
       :accomodation, :contact, :organization, :volounteers, :terms, :program_content
     )

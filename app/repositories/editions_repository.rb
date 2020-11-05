@@ -4,7 +4,7 @@ class EditionsRepository
   end
 
   def update(id, attrs)
-    apply = EditionApply.find(id)
+    apply = EditionApply.friendly.find(id)
     apply.update(attrs)
   end
 end

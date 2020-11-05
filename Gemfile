@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'honeybadger', '~> 4.0'
 gem "slim-rails"
 gem 'cancancan'
+gem 'friendly_id', '~> 5.4.0'
 
 # Use Active Storage variant
 gem "mini_magick"

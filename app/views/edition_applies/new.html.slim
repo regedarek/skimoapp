@@ -16,7 +16,8 @@
             - @edition_apply.errors.full_messages.each do |msg|
               li = msg
 
-  = form_for(@edition_apply, as: :edition_apply, url: edition_applies_path) do |f|
+  = form_for(@edition_apply, as: :edition_apply, url: season_edition_applies_path) do |f|
+    = f.hidden_field :season_id, value: Season.last.id
     = render 'form', f: f
 
     .alert.alert-warning role='alert'

@@ -10,6 +10,7 @@ class UpdateEdition
     optional(:address).maybe(:string)
     optional(:map_1).maybe(:string)
     optional(:map_2).maybe(:string)
+    optional(:season_id).maybe(:integer)
     optional(:map_3).maybe(:string)
     optional(:accomodation).maybe(:string)
     optional(:contact).maybe(:string)
@@ -25,8 +26,8 @@ class UpdateEdition
     form_outputs = UpdateEditionSchema.call(raw_params.to_unsafe_h)
     return Failure([:invalid, EditionApply.find(id), form_outputs.errors]) if form_outputs.failure?
 
-    editions_repository.update(id, form_outputs.to_h)
+    b = editions_repository.update(id, form_outputs.to_h)
 
-    Success(:success)
+    Success(b)
   end
 end

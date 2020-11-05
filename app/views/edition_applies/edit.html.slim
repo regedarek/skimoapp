@@ -3,9 +3,9 @@
     .col
       h1 Edytuj edycję do sezonu 2020/2021
 
-  = form_for(@edition_apply, as: :edition_apply, url: edition_apply_path(@edition_apply.id)) do |f|
+  = form_for(@edition_apply, as: :edition_apply, url: season_edition_apply_path(@edition_apply.id)) do |f|
     = render 'form', f: f
 
     = f.submit 'Edytuj', class: 'btn btn-primary'
     |   
-    = link_to 'wróć do zawodów', edition_applies_path, class: 'btn btn-secondary'
+    = link_to 'wróć do zawodów', season_edition_applies_path, class: 'btn btn-secondary'
