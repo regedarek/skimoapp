@@ -59,13 +59,13 @@
       .card
         .card-header Pozostałe edycje Pucharu Polski
         .card-body
-          table.table.table-sm
+          table.table
             thead.thead-dark
               tr
                 th scope="col"  Nazwa
                 th scope="col"  Data
-            tbody
-              - EditionApply.all.each_with_index do |apply, index|
+            tbody.tbody-light
+              - EditionApply.order(start_date: :asc).all.each_with_index do |apply, index|
                 tr
                   td = link_to apply.name, season_edition_apply_path(year: params[:year], id: apply.slug)
                   td = apply.start_date.to_date

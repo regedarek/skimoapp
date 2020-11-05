@@ -50,8 +50,8 @@ class EditionAppliesController < ApplicationController
     authorize! :manage, EditionApply
 
     Dry::Matcher::ResultMatcher.(update_edition.call(params[:id], edition_params)) do |m|
-      m.success do |v|
-        redirect_to edit_season_edition_apply_path(v), notice: 'Zaktualizowano'
+      m.success do |apply|
+        redirect_to edit_season_edition_apply_path(apply), notice: 'Zaktualizowano'
       end
 
       m.failure(:not_found) do
