@@ -22,7 +22,7 @@ class EditionAppliesController < ApplicationController
 
     Dry::Matcher::ResultMatcher.(apply_edition.call(edition_params)) do |m|
       m.success do |v|
-        redirect_to season_edition_applies_path, notice: 'Dziękujemy za zgłoszenie!'
+        redirect_to season_edition_applies_path(year: 2021), notice: 'Dziękujemy za zgłoszenie!'
       end
 
       m.failure(:not_found) do
@@ -51,7 +51,7 @@ class EditionAppliesController < ApplicationController
 
     Dry::Matcher::ResultMatcher.(update_edition.call(params[:id], edition_params)) do |m|
       m.success do |apply|
-        redirect_to edit_season_edition_apply_path(apply), notice: 'Zaktualizowano'
+        redirect_to edit_season_edition_apply_path(year: 2021, id: apply.id), notice: 'Zaktualizowano'
       end
 
       m.failure(:not_found) do
