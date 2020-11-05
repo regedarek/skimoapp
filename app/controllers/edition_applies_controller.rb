@@ -37,6 +37,8 @@ class EditionAppliesController < ApplicationController
   end
 
   def show
+    authorize! :read, EditionApply
+
     @apply = EditionApply.friendly.find(params[:id])
   end
 
