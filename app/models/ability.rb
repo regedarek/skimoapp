@@ -11,7 +11,6 @@ class Ability
   end
 
   def default
-    cannot :read, EditionApply
     can :read, Referee
   end
 
