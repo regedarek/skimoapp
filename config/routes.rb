@@ -14,4 +14,5 @@ Rails.application.routes.draw do
     resources :edition_applies, path: 'edycje'
   end
   get 'puchar', to: 'high_voltage/pages#show', id: 'puchar'
+  get 'kalendarz' => "high_voltage/pages#show", id: 'kalendarz'
 end

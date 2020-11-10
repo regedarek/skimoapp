@@ -1,0 +1,24 @@
+- url = "https://panel.kw.krakow.pl/api/competitions/skimo?country=#{params[:country]}&series=#{params[:series]}"
+- uri = URI(url)
+- response = Net::HTTP.get(uri)
+
+.container
+  .row
+    .col
+      = image_tag 'referees.jpg', class: 'img-fluid'
+
+.container
+  .row
+    .col
+      br
+      = render inline: response
+      br
+
+section#signup.signup-section
+  .container
+    .row
+      .col-md-10.col-lg-8.mx-auto.text-center
+        h2.text-white.mb-5 Już niedługo kolejny sezon!
+        small.text-muted
+          | Stronę przygotował Darek Finster z
+          a href="https://snw.kw.krakow.pl"  SNW KW Kraków
