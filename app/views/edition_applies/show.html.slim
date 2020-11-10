@@ -7,6 +7,7 @@
           | Z powodu niepewnej sytuacji związanej z sytuacją epidemiologiczną w kraju organizatorzy zawodów informują, że podane poniżej informacje mogą ulec zmianie, a zawody zostać przełożone lub odwołane.
           br
           | Dziękujemy za zrozumienie!
+
   br
   .row
     .col
@@ -14,6 +15,7 @@
         .card-header = @apply.name
         .card-body
           = @apply.description.body.to_s
+
   br
   .row
     .col
@@ -26,13 +28,13 @@
         .card-header Biuro zawodów
         .card-body
           = @apply.address
-  br
-  .row
-    .col
-      .card.text-white.bg-dark.mb-6
-        .card-header Organizator
-        .card-body
-          = @apply.organization.body.to_s
+  - if @apply.photos.attached?
+    br
+    .row
+      .col
+        - @apply.photos.each do |photo|
+          = image_tag(photo.variant(resize_to_fit: [600, 400]), style: 'width: 50%;')
+
 
   br
   .row
@@ -41,6 +43,13 @@
         .card-header Program zawodów
         .card-body
           = @apply.program_content.body.to_s
+  br
+  .row
+    .col
+      .card.text-white.bg-dark.mb-6
+        .card-header Organizator
+        .card-body
+          = @apply.organization.body.to_s
   br
   .row
     .col

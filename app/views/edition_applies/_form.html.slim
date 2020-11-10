@@ -80,8 +80,18 @@
     = f.label :contact
     = f.rich_text_area :contact
 
-.form-group
-  .alert.alert-primary role='alert'
-    | Opis zawodów, historia wraz z kilkoma zdjęciami oraz logo zawodów
-  = f.label :description
-  = f.rich_text_area :description
+.form-row
+  .form-group.col-md-12
+    .alert.alert-primary role='alert'
+      | Opis zawodów, historia wraz z kilkoma zdjęciami oraz logo zawodów
+    = f.rich_text_area :description
+
+.form-row
+  .form-group.col-md-12
+    .alert.alert-primary role='alert'
+      | Zdjęcia pod opisem
+    - if @edition_apply.photos.attached?
+      - @edition_apply.photos.each do |photo|
+        = link_to image_tag(photo.variant(resize_to_limit: [100, 100])), photo, target: :_blank
+    br
+    = f.file_field :photos, multiple: true

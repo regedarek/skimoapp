@@ -71,7 +71,7 @@ class EditionAppliesController < ApplicationController
     params.require(:edition_apply).permit(
       :name, :program_file, :start_date, :description, :season_id,
       :address, :map_1, :map_2, :map_3, :categories, :technical_restrictions,
-      :accomodation, :contact, :organization, :volounteers, :terms, :program_content
+      :accomodation, :contact, :organization, :volounteers, :terms, :program_content, photos: []
     )
   end
 end

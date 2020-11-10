@@ -8,6 +8,7 @@ class UpdateEdition
     optional(:program_file).maybe(:string)
     optional(:start_date).maybe(:string)
     optional(:address).maybe(:string)
+    optional(:photos).maybe(:array)
     optional(:map_1).maybe(:string)
     optional(:map_2).maybe(:string)
     optional(:season_id).maybe(:integer)
