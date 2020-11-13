@@ -34,7 +34,7 @@
       - @apply.photos.each do |photo|
         .col.d-flex
           = link_to url_for(photo) do
-            = image_tag(photo.variant(resize_to_fit: [400, 400]) class: 'd-flex')
+            = image_tag(photo.variant(resize_to_fit: [400, 400]), class: 'd-flex')
 
   br
   .row
