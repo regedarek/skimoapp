@@ -31,10 +31,9 @@
   - if @apply.photos.attached?
     br
     .row
-      .col
-        - @apply.photos.each do |photo|
-          = image_tag(photo.variant(resize_to_fit: [600, 400]), style: 'width: 50%;')
-
+      - @apply.photos.each do |photo|
+        .col
+          = image_tag(photo.variant(resize_to_fit: [400, 400]))
 
   br
   .row
