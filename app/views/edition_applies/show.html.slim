@@ -30,11 +30,11 @@
           = @apply.address
   - if @apply.photos.attached?
     br
-    .row
+    .row.d-flex
       - @apply.photos.each do |photo|
-        .col
+        .col.d-flex
           = link_to url_for(photo) do
-            = image_tag(photo.variant(resize_to_fit: [400, 400]))
+            = image_tag(photo.variant(resize_to_fit: [400, 400]) class: 'd-flex')
 
   br
   .row
