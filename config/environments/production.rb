@@ -2,6 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.hosts << "skimo.pl"
+  config.hosts << "www.skimo.pl"
   config.hosts << "54.38.54.135"
   config.hosts << "skimo.kw.krakow.pl"
   # Code is not reloaded between requests.
