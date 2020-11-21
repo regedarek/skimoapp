@@ -14,5 +14,6 @@ Rails.application.routes.draw do
     resources :edition_applies, path: 'edycje'
   end
   get 'puchar', to: 'high_voltage/pages#show', id: 'puchar'
+  get 'sezon/2020/klasyfikacja', to: 'high_voltage/pages#show', id: 'puchar_2020'
   get 'kalendarz' => "high_voltage/pages#show", id: 'kalendarz'
 end
