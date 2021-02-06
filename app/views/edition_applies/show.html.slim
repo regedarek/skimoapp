@@ -19,6 +19,8 @@
           li.nav-item role="presentation" 
             a#wyniki-tab.nav-link aria-controls="home" aria-selected="true" data-toggle="tab" href="#wyniki" role="tab" Wyniki
         li.nav-item role="presentation" 
+          a#photos-tab.nav-link aria-controls="home" aria-selected="false" data-toggle="tab" href="#photos" role="tab" Zdjęcia
+        li.nav-item role="presentation" 
           a#description-tab.nav-link aria-controls="home" aria-selected="false" data-toggle="tab" href="#description" role="tab" O zawodach
         li.nav-item role="presentation" 
           a#contact-tab.nav-link aria-controls="contact" aria-selected="false" data-toggle="tab" href="#contact" role="tab" Organizator
@@ -67,4 +69,10 @@
               .card.bg-light.mb-12
                 .card-body
                   = @apply.organization.body.to_s
-      br
+        #photos.tab-pane.fade aria-labelledby="photos-tab" role="tabpanel"
+          .row
+            .col
+              #gallery.row data-target="#exampleModal" data-toggle="modal" 
+                - @apply.photos.each do |photo|
+                  .col-12.col-sm-6.col-lg-3
+                    = image_tag(photo.variant(resize_to_fit: [300, 300]), class: 'w-100')
