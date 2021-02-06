@@ -17,7 +17,7 @@
           a#covid-tab.nav-link aria-controls="home" aria-selected="true" data-toggle="tab" href="#covid" role="tab" Covid 19
         - if @apply.results
           li.nav-item role="presentation" 
-            a#results-tab.nav-link aria-controls="home" aria-selected="true" data-toggle="tab" href="#results" role="tab" Wyniki
+            a#wyniki-tab.nav-link aria-controls="home" aria-selected="true" data-toggle="tab" href="#wyniki" role="tab" Wyniki
         li.nav-item role="presentation" 
           a#description-tab.nav-link aria-controls="home" aria-selected="false" data-toggle="tab" href="#description" role="tab" O zawodach
         li.nav-item role="presentation" 
@@ -43,7 +43,7 @@
               .card.bg-light.mb-12
                 .card-body
                   = @apply.description.body.to_s
-        #results.tab-pane.fade.show aria-labelledby="results-tab" role="tabpanel"
+        #wyniki.tab-pane.fade.show aria-labelledby="wyniki-tab" role="tabpanel"
           .row
             .col
               .card.text-white.border-primary

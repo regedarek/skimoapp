@@ -29,6 +29,9 @@ import 'select2/dist/css/select2.css';
 
 $(document).ready(function() {
   $('select').select2();
+// Javascript to enable link to tab
+        let selectedTab = window.location.hash;
+        $('.nav-link[href="' + selectedTab + '"]' ).trigger('click');
 
     $('.customer-logos').slick({
         slidesToShow: 6,
