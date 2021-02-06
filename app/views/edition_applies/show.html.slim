@@ -17,13 +17,13 @@
           a#covid-tab.nav-link aria-controls="home" aria-selected="true" data-toggle="tab" href="#covid" role="tab" Covid 19
         - if @apply.results
           li.nav-item role="presentation" 
-            a.nav-link target='_blank' href="#{@apply.results}" role="tab" Wyniki
+            a#results-tab.nav-link aria-controls="home" aria-selected="true" data-toggle="tab" href="#results" role="tab" Wyniki
         li.nav-item role="presentation" 
           a#description-tab.nav-link aria-controls="home" aria-selected="false" data-toggle="tab" href="#description" role="tab" O zawodach
         li.nav-item role="presentation" 
           a#contact-tab.nav-link aria-controls="contact" aria-selected="false" data-toggle="tab" href="#contact" role="tab" Organizator
         li.nav-item role="presentation" 
-          a.nav-link target='_blank' href="/regulamin" role="tab" Regulamin zawodów
+          a.nav-link href="/regulamin" role="tab" Regulamin zawodów
       #myTabContent.tab-content
         br
         #home.tab-pane.fade.show.active aria-labelledby="home-tab" role="tabpanel"
@@ -43,6 +43,15 @@
               .card.bg-light.mb-12
                 .card-body
                   = @apply.description.body.to_s
+        #results.tab-pane.fade.show aria-labelledby="results-tab" role="tabpanel"
+          .row
+            .col
+              .card.text-white.border-primary
+                .card-header.text-secondary
+                  = @apply.name
+                .card-body.text-secondary
+                  iframe src="#{@apply.results}" height="1380" width='100%'
+                  b Klasyfikację opracowała firma BGTimeSport(https://bgtimesport.pl/zawody)
         #profile.tab-pane.fade aria-labelledby="profile-tab" role="tabpanel"
         #covid.tab-pane.fade aria-labelledby="covid-tab" role="tabpanel"
           .row
