@@ -33,7 +33,7 @@
                 blockquote.fb-xfbml-parse-ignore cite="https://www.facebook.com/#{@apply.fb_page}" 
                   a href="https://www.facebook.com/#{@apply.fb_page}" = @apply.name
             .col-md-6
-              .card.text-white.bg-secondary.mb-6
+              .card.text-dark.mb-6
                 .card-header Program zawodów
                 .card-body
                   = @apply.program_content.body.to_s
@@ -57,9 +57,9 @@
         #covid.tab-pane.fade aria-labelledby="covid-tab" role="tabpanel"
           .row
             .col-sm-12
-              .card.text-black.bg-warning.mb-12
-                .card-header Zalecenia dotyczące Covid-19
-                .card-body
+              .card.border-danger.mb-12
+                .card-header.text-danger Zalecenia dotyczące Covid-19
+                .card-body.text-danger
                   = @apply.covid_19.body.to_s
         #contact.tab-pane.fade aria-labelledby="contact-tab" role="tabpanel"
           .row
