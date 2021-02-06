@@ -8,11 +8,13 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
   </head>
-  <body id="page-top">
+  <body id="page-top" data-no-turbolinks="true">
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v9.0&appId=200239250615058&autoLogAppEvents=1" nonce="uFTXiK4D"></script>
     <nav class="navbar navbar-expand-lg navbar-light navbar-shrink fixed-top" id="mainNav">
       <div class="container">
           <a class="navbar-brand js-scroll-trigger text-info" href="/">SKIMO</a>
@@ -24,13 +26,12 @@
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Puchar Polski
+                    Puchar Polski 2021
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" target='_blank' href="https://bgtimesport.pl/online/open/zaw_id/500/bieg/KUBA">WYNIKI I Edycji w Szczyrku</a>
                     <a class="dropdown-item" target='_blank' href="https://www.facebook.com/PucharPolskiWNarciarstwieWysokogorskim">Aktualności Pucharu Polski</a>
-                    <a class="dropdown-item" href="/sezon/2020/klasyfikacja">Klasyfikacja Pucharu Polski 2020</a>
                     <a class="dropdown-item" href="/sezon/2021/edycje">Edycje Pucharu Polski 2021</a>
+                    <a class="dropdown-item" target='_blank' href="http://pza.org.pl/wp-content/uploads/2017/12/reg_zaw_nw_2018.pdf">Regulamin zawodów NW</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -49,14 +50,6 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="http://skimo.pl/kalendarz">Kalendarz SKIMO 2020/2021</a>
                     <a class="dropdown-item" target='_blank' href="https://www.facebook.com/groups/1092193637796403">Grupa dyskusyjna</a>
-                  </div>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dokumenty
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" target='_blank' href="http://pza.org.pl/wp-content/uploads/2017/12/reg_zaw_nw_2018.pdf">Regulamin zawodów NW</a>
                   </div>
                 </li>
                 <% if user_signed_in? %>

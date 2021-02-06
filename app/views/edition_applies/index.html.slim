@@ -2,26 +2,16 @@
   .row
     .col
       .alert.alert-primary role="alert" 
-        h4.alert-heading Edycje Pucharu Polski 2021/2022
+        h4.alert-heading Puchar Polski w Narciarstwie Wysokogórskim - Edycja 2021
   .row
     .col
       table.table
-        thead.thead-dark
-          tr
-            th scope="col"  Nazwa
-            th scope="col"  Data
-            th
-        tbody.thead-light
+        tbody
           - @edition_applies.each_with_index do |apply, index|
             tr
-              td scope='row' = link_to apply.name, season_edition_apply_path(year: params[:year], id: apply.slug)
+              td scope='row' = link_to apply.name, season_edition_apply_path(year: params[:year], id: apply.slug), :"data-no-turbolink" => true
               td scope='row' = apply.start_date.to_date
               td scope='row'
                 - if can? :manage, apply
                   = link_to edit_season_edition_apply_path(year: params[:year], id: apply.slug) do
                     = fa_icon "user-edit", style: 'color: red'
-
-  .row
-    .col
-      = link_to 'https://skimo.pl/kalendarz' do
-        button.btn.btn-success.btn-lg.btn-block type="button" Zobacz kalendarz zawodów z całego świata

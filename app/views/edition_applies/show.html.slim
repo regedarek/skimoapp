@@ -1,81 +1,51 @@
 .container
+  br
   .row
     .col
-      .card.bg-danger.mb-6
-        .card-header COVID-19
-        .card-body
-          | Z powodu niepewnej sytuacji związanej z sytuacją epidemiologiczną w kraju organizatorzy zawodów informują, że podane poniżej informacje mogą ulec zmianie, a zawody zostać przełożone lub odwołane.
-          br
-          | Dziękujemy za zrozumienie!
+      nav aria-label="breadcrumb" 
+        ol.breadcrumb
+          li.breadcrumb-item
+            a href="/" Puchar Polski
+          li.breadcrumb-item
+            a href="/sezon/2021/edycje"  2021
+          li.breadcrumb-item.active aria-current="page"
+            = @apply.name
+      ul#myTab.nav.nav-tabs role="tablist" 
+        li.nav-item role="presentation" 
+          a#home-tab.nav-link.active aria-controls="home" aria-selected="true" data-toggle="tab" href="#home" role="tab" Najważniejsze informacje
+        li.nav-item role="presentation" 
+          a#profile-tab.nav-link target='_blank' href="#{@apply.results}" role="tab" Wyniki
+        li.nav-item role="presentation" 
+          a#description-tab.nav-link aria-controls="home" aria-selected="false" data-toggle="tab" href="#description" role="tab" O zawodach
+        li.nav-item role="presentation" 
+          a#contact-tab.nav-link aria-controls="contact" aria-selected="false" data-toggle="tab" href="#contact" role="tab" Organizator
+        li.nav-item role="presentation" 
+          a#profile-tab.nav-link target='_blank' href="http://pza.org.pl/wp-content/uploads/2017/12/reg_zaw_nw_2018.pdf" role="tab" Regulamin zawodów
+      #myTabContent.tab-content
+        br
+        #home.tab-pane.fade.show.active aria-labelledby="home-tab" role="tabpanel"
+          .row
+            .col-sm-6
+              .fb-page data-adapt-container-width="true" data-height="" data-hide-cover="false" data-href="https://www.facebook.com/Klub-Skialpinistyczny-Kandahar-160394170733974" data-show-facepile="false" data-small-header="false" data-tabs="timeline" data-width="500" 
+                blockquote.fb-xfbml-parse-ignore cite="https://www.facebook.com/#{@apply.fb_page}" 
+                  a href="https://www.facebook.com/Klub-Skialpinistyczny-Kandahar-160394170733974"  Klub Skialpinistyczny Kandahar
+            .col-sm-6
+              .card.text-white.bg-secondary.mb-6
+                .card-header Program zawodów
+                .card-body
+                  = @apply.program_content.body.to_s
+        #description.tab-pane.fade.show aria-labelledby="description-tab" role="tabpanel"
+          .row
+            .col
+              .card.bg-light.mb-6
+                .card-body
+                  = @apply.description.body.to_s
+        #profile.tab-pane.fade aria-labelledby="profile-tab" role="tabpanel"
+        #contact.tab-pane.fade aria-labelledby="contact-tab" role="tabpanel"
+          .row
+            .col
+              .card.bg-light.mb-6
+                .card-body
+                  = @apply.organization.body.to_s
 
-  br
-  .row
-    .col
-      .card.bg-light.mb-6
-        .card-header = @apply.name
-        .card-body
-          = @apply.description.body.to_s
-
-  br
-  .row
-    .col
-      .card.text-white.bg-info.mb-6
-        .card-header Termin wydarzenia
-        .card-body
-          = @apply.start_date.strftime("%d-%m-%Y")
-    .col
-      .card.text-white.bg-info.mb-6
-        .card-header Biuro zawodów
-        .card-body
-          = @apply.address
-  - if @apply.photos.attached?
-    br
-    .row.d-flex
-      - @apply.photos.each do |photo|
-        .col.d-flex
-          = link_to url_for(photo) do
-            = image_tag(photo.variant(resize_to_fit: [400, 400]), class: 'd-flex')
-
-  br
-  .row
-    .col
-      .card.text-white.bg-secondary.mb-6
-        .card-header Program zawodów
-        .card-body
-          = @apply.program_content.body.to_s
-  br
-  .row
-    .col
-      .card.text-white.bg-dark.mb-6
-        .card-header Organizator
-        .card-body
-          = @apply.organization.body.to_s
-  br
-  .row
-    .col
-      .card.text-white.bg-warning.mb-6
-        .card-header Kontakt
-        .card-body
-          = @apply.contact.body.to_s
-    .col
-      .card.text-white.bg-warning.mb-6
-        .card-header Zakwaterowanie
-        .card-body
-          = @apply.accomodation.body.to_s
-  br
-  .row
-    .col
-      .card
-        .card-header Pozostałe edycje Pucharu Polski
-        .card-body
-          table.table
-            thead.thead-dark
-              tr
-                th scope="col"  Nazwa
-                th scope="col"  Data
-            tbody.tbody-light
-              - EditionApply.order(start_date: :asc).all.each_with_index do |apply, index|
-                tr
-                  td = link_to apply.name, season_edition_apply_path(year: 2021, id: apply.slug)
-                  td = apply.start_date.to_date
-  br
+      br

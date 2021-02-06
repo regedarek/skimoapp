@@ -69,7 +69,7 @@ class EditionAppliesController < ApplicationController
 
   def edition_params
     params.require(:edition_apply).permit(
-      :name, :program_file, :start_date, :description, :season_id,
+      :name, :program_file, :start_date, :description, :season_id, :results, :fb_page,
       :address, :map_1, :map_2, :map_3, :categories, :technical_restrictions,
       :accomodation, :contact, :organization, :volounteers, :terms, :program_content, photos: []
     )

@@ -54,6 +54,17 @@
 .form-row
   .col-md-12
     .alert.alert-primary role='alert'
+      | Online
+  .form-group.col-md-6
+    = f.label :results
+    = f.text_field :results, class: 'form-control'
+  .form-group.col-md-6
+    = f.label :fb_page
+    = f.text_field :fb_page, class: 'form-control'
+
+.form-row
+  .col-md-12
+    .alert.alert-primary role='alert'
       | Adres biura zawodów oraz zakładana potrzebna ilość organizatorów, sędziów oraz wolontariuszy
   .form-group.col-md-6
     = f.label :address
@@ -61,6 +72,15 @@
   .form-group.col-md-6
     = f.label :volounteers
     = f.number_field :volounteers, class: 'form-control'
+
+.form-row
+  .form-group.col-md-6
+    = f.label :categories
+    = f.rich_text_area :categories
+
+  .form-group.col-md-6
+    = f.label :technical_restrictions
+    = f.rich_text_area :technical_restrictions
 
 .form-row
   .form-group.col-md-6

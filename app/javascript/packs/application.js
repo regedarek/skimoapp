@@ -6,7 +6,7 @@
 require("trix")
 require("@rails/actiontext")
 require("@rails/ujs").start()
-require("turbolinks").start()
+//require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery");
@@ -37,8 +37,9 @@ $(document).ready(function() {
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
+//
 $(document).on('turbolinks:load', function() {
+    FB.init({ status: true, cookie: true, xfbml: true });
     $('.customer-logos').slick({
         slidesToShow: 6,
         slidesToScroll: 1,
