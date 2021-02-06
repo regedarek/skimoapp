@@ -23,7 +23,7 @@
         li.nav-item role="presentation" 
           a#contact-tab.nav-link aria-controls="contact" aria-selected="false" data-toggle="tab" href="#contact" role="tab" Organizator
         li.nav-item role="presentation" 
-          a.nav-link href="/regulamin" role="tab" Regulamin zawodów
+          a#rules-tab.nav-link aria-controls="home" aria-selected="true" data-toggle="tab" href="#rules" role="tab" Regulamin zawodów
       #myTabContent.tab-content
         br
         #home.tab-pane.fade.show.active aria-labelledby="home-tab" role="tabpanel"
@@ -52,11 +52,12 @@
                 .card-body.text-secondary
                   iframe src="#{@apply.results}" height="1380" width='100%'
                   b Klasyfikację opracowała firma BGTimeSport(https://bgtimesport.pl/zawody)
-        #profile.tab-pane.fade aria-labelledby="profile-tab" role="tabpanel"
+        #rules.tab-pane.fade aria-labelledby="rules-tab" role="tabpanel"
+          iframe height="550px" src="https://drive.google.com/file/d/1FjbZXqB_k__jkOaS4c2OSFbmjTigZ4q8/preview" width="100%" 
         #covid.tab-pane.fade aria-labelledby="covid-tab" role="tabpanel"
           .row
             .col-sm-12
-              .card.text-white.bg-warning.mb-12
+              .card.text-black.bg-warning.mb-12
                 .card-header Zalecenia dotyczące Covid-19
                 .card-body
                   = @apply.covid_19.body.to_s
