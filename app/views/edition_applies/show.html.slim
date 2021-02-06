@@ -15,8 +15,9 @@
           a#home-tab.nav-link.active aria-controls="home" aria-selected="true" data-toggle="tab" href="#home" role="tab" Najważniejsze informacje
         li.nav-item role="presentation" 
           a#covid-tab.nav-link aria-controls="home" aria-selected="true" data-toggle="tab" href="#covid" role="tab" Covid 19
-        li.nav-item role="presentation" 
-          a.nav-link target='_blank' href="#{@apply.results}" role="tab" Wyniki
+        - if @apply.results
+          li.nav-item role="presentation" 
+            a.nav-link target='_blank' href="#{@apply.results}" role="tab" Wyniki
         li.nav-item role="presentation" 
           a#description-tab.nav-link aria-controls="home" aria-selected="false" data-toggle="tab" href="#description" role="tab" O zawodach
         li.nav-item role="presentation" 
