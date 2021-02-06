@@ -28,11 +28,11 @@
         br
         #home.tab-pane.fade.show.active aria-labelledby="home-tab" role="tabpanel"
           .row
-            .col-sm-6
+            .col-md-6
               .fb-page data-adapt-container-width="true" data-height="" data-hide-cover="false" data-href="https://www.facebook.com/#{@apply.fb_page}" data-show-facepile="false" data-small-header="false" data-tabs="timeline" data-width="500" 
                 blockquote.fb-xfbml-parse-ignore cite="https://www.facebook.com/#{@apply.fb_page}" 
                   a href="https://www.facebook.com/#{@apply.fb_page}" = @apply.name
-            .col-sm-6
+            .col-md-6
               .card.text-white.bg-secondary.mb-6
                 .card-header Program zawodów
                 .card-body
@@ -40,7 +40,7 @@
         #description.tab-pane.fade.show aria-labelledby="description-tab" role="tabpanel"
           .row
             .col
-              .card.bg-light.mb-6
+              .card.bg-light.mb-12
                 .card-body
                   = @apply.description.body.to_s
         #profile.tab-pane.fade aria-labelledby="profile-tab" role="tabpanel"
@@ -54,8 +54,7 @@
         #contact.tab-pane.fade aria-labelledby="contact-tab" role="tabpanel"
           .row
             .col
-              .card.bg-light.mb-6
+              .card.bg-light.mb-12
                 .card-body
                   = @apply.organization.body.to_s
-
       br
