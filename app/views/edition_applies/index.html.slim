@@ -4,7 +4,7 @@
       .alert.alert-primary role="alert" 
         h4.alert-heading Puchar Polski w Narciarstwie Wysokogórskim - Edycja 2021
   .row
-    .col
+    .col-sm-6
       table.table
         tbody
           - @edition_applies.each_with_index do |apply, index|
@@ -15,3 +15,8 @@
                 - if can? :manage, apply
                   = link_to edit_season_edition_apply_path(year: params[:year], id: apply.slug) do
                     = fa_icon "user-edit", style: 'color: red'
+
+    .col-sm-6
+      .fb-page data-adapt-container-width="true" data-height="" data-hide-cover="false" data-href="https://www.facebook.com/PucharPolskiWNarciarstwieWysokogorskim" data-show-facepile="false" data-small-header="false" data-tabs="timeline" data-width="500" 
+        blockquote.fb-xfbml-parse-ignore cite="https://www.facebook.com/PucharPolskiWNarciarstwieWysokogorskim" 
+          a href="https://www.facebook.com/PucharPolskiWNarciarstwieWysokogorskim" Puchar Polski
