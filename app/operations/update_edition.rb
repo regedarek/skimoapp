@@ -11,6 +11,7 @@ class UpdateEdition
     optional(:photos).maybe(:array)
     optional(:results).maybe(:string)
     optional(:fb_page).maybe(:string)
+    optional(:covid_19).maybe(:string)
     optional(:map_1).maybe(:string)
     optional(:map_2).maybe(:string)
     optional(:season_id).maybe(:integer)

@@ -13,6 +13,7 @@ class EditionApply < ApplicationRecord
   has_many_attached :photos
 
   has_rich_text :description
+  has_rich_text :covid_19
   has_rich_text :program_content
   has_rich_text :categories
   has_rich_text :technical_restrictions

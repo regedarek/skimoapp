@@ -14,13 +14,15 @@
         li.nav-item role="presentation" 
           a#home-tab.nav-link.active aria-controls="home" aria-selected="true" data-toggle="tab" href="#home" role="tab" Najważniejsze informacje
         li.nav-item role="presentation" 
-          a#profile-tab.nav-link target='_blank' href="#{@apply.results}" role="tab" Wyniki
+          a#covid-tab.nav-link aria-controls="home" aria-selected="true" data-toggle="tab" href="#covid" role="tab" Covid 19
+        li.nav-item role="presentation" 
+          a.nav-link target='_blank' href="#{@apply.results}" role="tab" Wyniki
         li.nav-item role="presentation" 
           a#description-tab.nav-link aria-controls="home" aria-selected="false" data-toggle="tab" href="#description" role="tab" O zawodach
         li.nav-item role="presentation" 
           a#contact-tab.nav-link aria-controls="contact" aria-selected="false" data-toggle="tab" href="#contact" role="tab" Organizator
         li.nav-item role="presentation" 
-          a#profile-tab.nav-link target='_blank' href="http://pza.org.pl/wp-content/uploads/2017/12/reg_zaw_nw_2018.pdf" role="tab" Regulamin zawodów
+          a.nav-link target='_blank' href="http://pza.org.pl/wp-content/uploads/2017/12/reg_zaw_nw_2018.pdf" role="tab" Regulamin zawodów
       #myTabContent.tab-content
         br
         #home.tab-pane.fade.show.active aria-labelledby="home-tab" role="tabpanel"
@@ -28,7 +30,7 @@
             .col-sm-6
               .fb-page data-adapt-container-width="true" data-height="" data-hide-cover="false" data-href="https://www.facebook.com/Klub-Skialpinistyczny-Kandahar-160394170733974" data-show-facepile="false" data-small-header="false" data-tabs="timeline" data-width="500" 
                 blockquote.fb-xfbml-parse-ignore cite="https://www.facebook.com/#{@apply.fb_page}" 
-                  a href="https://www.facebook.com/Klub-Skialpinistyczny-Kandahar-160394170733974"  Klub Skialpinistyczny Kandahar
+                  a href="https://www.facebook.com/#{@apply.fb_page}" = @apply.name
             .col-sm-6
               .card.text-white.bg-secondary.mb-6
                 .card-header Program zawodów
@@ -41,6 +43,13 @@
                 .card-body
                   = @apply.description.body.to_s
         #profile.tab-pane.fade aria-labelledby="profile-tab" role="tabpanel"
+        #covid.tab-pane.fade aria-labelledby="covid-tab" role="tabpanel"
+          .row
+            .col-sm-12
+              .card.text-white.bg-warning.mb-12
+                .card-header Zalecenia dotyczące Covid-19
+                .card-body
+                  = @apply.covid_19.body.to_s
         #contact.tab-pane.fade aria-labelledby="contact-tab" role="tabpanel"
           .row
             .col
