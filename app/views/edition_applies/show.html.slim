@@ -12,12 +12,15 @@
             = @apply.name
       ul#myTab.nav.nav-tabs role="tablist" 
         li.nav-item role="presentation" 
-          a#home-tab.nav-link.active aria-controls="home" aria-selected="true" data-toggle="tab" href="#home" role="tab" Najważniejsze informacje
+          a#home-tab.nav-link.active.bg-primary.text-white.border-primary aria-controls="home" aria-selected="true" data-toggle="tab" href="#home" role="tab" Najważniejsze informacje
+        - if @apply.sign_up_url
+          li.nav-item role="presentation" 
+            a.nav-link.bg-danger.text-white.border-danger target="_blank" aria-controls="home" aria-selected="true" href="#{@apply.sign_up_url}" role="tab" Zapisy
         li.nav-item role="presentation" 
-          a#covid-tab.nav-link aria-controls="home" aria-selected="true" data-toggle="tab" href="#covid" role="tab" Covid 19
+          a#covid-tab.nav-link.bg-warning.text-white.border-warning aria-controls="home" aria-selected="true" data-toggle="tab" href="#covid" role="tab" Covid 19
         - if @apply.results
           li.nav-item role="presentation" 
-            a#wyniki-tab.nav-link aria-controls="home" aria-selected="true" data-toggle="tab" href="#wyniki" role="tab" Wyniki
+            a#wyniki-tab.nav-link.bg-success.text-white.border-success aria-controls="home" aria-selected="true" data-toggle="tab" href="#wyniki" role="tab" Wyniki
         li.nav-item role="presentation" 
           a#photos-tab.nav-link aria-controls="home" aria-selected="false" data-toggle="tab" href="#photos" role="tab" Zdjęcia
         li.nav-item role="presentation" 

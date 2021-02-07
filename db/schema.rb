@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_06_211723) do
+ActiveRecord::Schema.define(version: 2021_02_07_005312) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2021_02_06_211723) do
     t.string "results"
     t.string "fb_page"
     t.text "covid_19"
+    t.string "sign_up_url"
     t.index ["slug"], name: "index_edition_applies_on_slug", unique: true
   end
 

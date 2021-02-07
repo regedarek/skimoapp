@@ -8,6 +8,7 @@ class UpdateEdition
     optional(:program_file).maybe(:string)
     optional(:start_date).maybe(:string)
     optional(:address).maybe(:string)
+    optional(:sign_up_url).maybe(:string)
     optional(:photos).maybe(:array)
     optional(:results).maybe(:string)
     optional(:fb_page).maybe(:string)
