@@ -73,6 +73,36 @@
           .row
             .col
               #gallery.row data-target="#exampleModal" data-toggle="modal" 
-                - @apply.photos.each do |photo|
+                - @apply.photos.each_with_index do |photo,i|
                   .col-12.col-sm-6.col-lg-3
-                    = image_tag(photo.variant(resize_to_fit: [300, 300]), class: 'w-100')
+                    img.w-100 alt=("First slide") data-slide-to="#{i}" data-target="#carouselExample" src="#{url_for(photo)}" /
+              #exampleModal.modal.fade aria-hidden="true" role="dialog" tabindex="-1" 
+                .modal-dialog role="document" 
+                  .modal-content
+                    .modal-header
+                      button.close aria-label="Zamknij" data-dismiss="modal" type="button" 
+                        span aria-hidden="true"  &times;
+                    .modal-body
+                      #carouselExample.carousel.slide data-ride="carousel" 
+                        ol.carousel-indicators
+                          - @apply.photos.each_with_index do |photo,i|
+                            - if i == 0
+                              li.active data-slide-to="#{i}" data-target="#carouselExample" 
+                            - else
+                              li data-slide-to="{i}" data-target="#carouselExample" 
+                        .carousel-inner
+                          - @apply.photos.each_with_index do |photo,i|
+                            - if i == 0
+                              .carousel-item.active
+                                img.d-block.w-100 alt=("First slide") src="#{url_for(photo)}" /
+                            - else
+                              .carousel-item
+                                img.d-block.w-100 alt=("First slide") src="#{url_for(photo)}" /
+                        a.carousel-control-prev data-slide="prev" href="#carouselExample" role="button" 
+                          span.carousel-control-prev-icon aria-hidden="true" 
+                          span.sr-only Previous
+                        a.carousel-control-next data-slide="next" href="#carouselExample" role="button" 
+                          span.carousel-control-next-icon aria-hidden="true" 
+                          span.sr-only Next
+                    .modal-footer
+                      button.btn.btn-secondary data-dismiss="modal" type="button"  Zamknij
