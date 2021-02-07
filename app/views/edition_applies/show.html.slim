@@ -52,19 +52,19 @@
           .row
             .col
               .card.text-white.border-primary
-                .card-header.text-secondary
+                .card-header.text-white.bg-success
                   = @apply.name
                 .card-body.text-secondary
                   iframe src="#{@apply.results}" height="1380" width='100%'
-                  b Klasyfikację opracowała firma BGTimeSport(https://bgtimesport.pl/zawody)
+                  b Klasyfikację opracowała firma BGTimeSport (https://bgtimesport.pl/zawody)
         #rules.tab-pane.fade aria-labelledby="rules-tab" role="tabpanel"
           iframe height="550px" src="https://drive.google.com/file/d/1FjbZXqB_k__jkOaS4c2OSFbmjTigZ4q8/preview" width="100%" 
         #covid.tab-pane.fade aria-labelledby="covid-tab" role="tabpanel"
           .row
             .col-sm-12
-              .card.border-danger.mb-12
-                .card-header.text-danger Zalecenia dotyczące Covid-19
-                .card-body.text-danger
+              .card.border-warning.mb-12
+                .card-header.text-white.bg-warning Zalecenia dotyczące Covid-19
+                .card-body.text-black
                   = @apply.covid_19.body.to_s
         #contact.tab-pane.fade aria-labelledby="contact-tab" role="tabpanel"
           .row
@@ -97,10 +97,12 @@
                           - @apply.photos.each_with_index do |photo,i|
                             - if i == 0
                               .carousel-item.active
-                                img.d-block.w-100 alt=("First slide") src="#{url_for(photo)}" /
+                                = link_to url_for(photo) do
+                                  img.d-block.w-100 alt=("First slide") src="#{url_for(photo)}" /
                             - else
                               .carousel-item
-                                img.d-block.w-100 alt=("First slide") src="#{url_for(photo)}" /
+                                = link_to url_for(photo), target: :_blank do
+                                  img.d-block.w-100 alt=("First slide") src="#{url_for(photo)}" /
                         a.carousel-control-prev data-slide="prev" href="#carouselExample" role="button" 
                           span.carousel-control-prev-icon aria-hidden="true" 
                           span.sr-only Previous
@@ -109,3 +111,4 @@
                           span.sr-only Next
                     .modal-footer
                       button.btn.btn-secondary data-dismiss="modal" type="button"  Zamknij
+        br
