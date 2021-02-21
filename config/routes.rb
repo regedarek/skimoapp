@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
   get 'puchar', to: 'high_voltage/pages#show', id: 'puchar'
   get 'sezon/2020/klasyfikacja', to: 'high_voltage/pages#show', id: 'puchar_2020'
+  get 'sezon/2021/klasyfikacja', to: 'high_voltage/pages#show', id: 'puchar_2021'
   get 'kalendarz' => "high_voltage/pages#show", id: 'kalendarz'
   get 'regulamin' => "high_voltage/pages#show", id: 'rules'
 end
