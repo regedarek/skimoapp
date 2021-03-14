@@ -3,7 +3,10 @@ class RefereesRepository
     Referee.create(referee_attrs)
   end
 
-  def update(id:, attrs:)
-    Referee.find(id).update(attrs)
+  def update(id:, attrs:, expiration_date:)
+    referee = Referee.find(id)
+    referee.update(attrs)
+    referee.update(expiration_date: expiration_date)
+    referee
   end
 end

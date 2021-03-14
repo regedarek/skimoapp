@@ -22,7 +22,8 @@ class UpdateReferee
 
     referees_repository.update(
       id: form_outputs[:id],
-      attrs: form_outputs[:referee].extract!(:first_name, :last_name, :number)
+      attrs: form_outputs[:referee].extract!(:first_name, :last_name, :number),
+      expiration_date: form_outputs[:referee][:expiration]
     )
 
     Success(:success)
