@@ -15,6 +15,19 @@
             th scope="col"  Numer uprawnień
             th scope="col"  Data ważności
             th
+        - if can? :manage, Referee
+          tbody
+            - @referees.where(expiration_date: nil).each_with_index do |referee, index|
+              tr
+                th scope="row" = index + 1
+                td = referee.display_name
+                td = referee.organizations
+                td = referee.number || 'aspirant'
+                td = referee.expiration_date
+                td
+                  - if can? :manage, referee
+                    = link_to edit_referee_path(referee.id) do
+                      = fa_icon "user-edit", style: 'color: red'
         tbody
           - @referees.where(expiration_date: Time.zone.now..Float::INFINITY).each_with_index do |referee, index|
             tr

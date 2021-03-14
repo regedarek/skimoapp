@@ -10,7 +10,7 @@ class CreateReferee
       optional(:number).maybe(:string)
       optional(:email).maybe(:string)
       optional(:organization).maybe(:string)
-      required(:expiration_date).filled(:string)
+      optional(:expiration_date).maybe(:string)
     end
   end
 

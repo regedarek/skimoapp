@@ -12,31 +12,22 @@ class RefereesController < ApplicationController
   end
 
   def new
-    @referee = RefereeEntity.new(
-      first_name: '',
-      last_name: '',
-      email: '',
-      phone: '',
-      number: '',
-      organization: '',
-      expiration_date: ''
-    )
+    @referee = Referee.new.to_entity
   end
 
   def create
-    authorize! :create, Referee
-
     Dry::Matcher::ResultMatcher.(create_referee.call(params)) do |m|
       m.success do |v|
         redirect_to referees_path, notice: 'Udało się'
       end
 
       m.failure(:not_found) do
-        "No such thing"
+        @referee = Referee.new(params[:referee])
+        render :new
       end
 
       m.failure(:invalid) do |_code, params, errors|
-        @referee = RefereeEntity.new(params[:referee])
+        @referee = Referee.new(params[:referee])
         render :new
       end
     end

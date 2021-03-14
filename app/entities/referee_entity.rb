@@ -10,7 +10,6 @@ end
 class RefereeEntity < Dry::Struct
   transform_keys(&:to_sym)
 
-  attribute :id, Types::Integer.optional
   attribute :first_name, Types::String.optional
   attribute :last_name, Types::String.optional
   attribute :user_id, Types::Coercible::Integer.optional
@@ -18,7 +17,7 @@ class RefereeEntity < Dry::Struct
   attribute :phone, Types::String.optional
   attribute :organizations, Types::String.optional
   attribute :expiration, Types::Params::Date.optional
-  attribute :number, Types::Coercible::Integer.optional
+  attribute :number, Types::Coercible::Integer.optional | Types::String.optional
 
   def user?
     user_id.present?
