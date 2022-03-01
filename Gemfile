@@ -28,7 +28,7 @@ gem 'friendly_id', '~> 5.4.0'
 
 # Use Active Storage variant
 gem "mini_magick"
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 gem 'activestorage-openstack', '1.4.1'
 gem 'rails-i18n'
 
